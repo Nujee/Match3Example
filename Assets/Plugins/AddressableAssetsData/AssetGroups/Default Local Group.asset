@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 088e3700774efdf4db70a51e1bace1d6
+  m_SerializeEntries:
+  - m_GUID: b4fb64337b38a6e4f81cc88719d97fbc
+    m_Address: Confetti
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a44e42a95027a4e41ad03e87cd4f7d0f
+    m_Address: GroundContactEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67c882d7634854f47b6a861269818de6
+    m_Address: OnRoadEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 30069ffbe1e4f99458aad491e3c303fc
+    m_Address: SpeedLanes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5669cb668f02d3f478c80d9be453cddf
+    m_Address: ConfettiCurvedModel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d0f3bfc3c9881e64b8a83b84b7c96ea0
+    m_Address: ConfettiPurple
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b05153a7759adc45b6b13738c683111
+    m_Address: ConfettiOrange1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e23eda2e9a59c8b48adb9ed9e12308e3
+    m_Address: ConfettiBlue
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c5dfff94ea4bb6a41bb4288f8af7f178
+    m_Address: ConfettiGreen
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 57350e4cf5645a3448d5426f20460806
+    m_Address: BlankMaterial
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 842c52df5e785724b8173a4de612ef43
+    m_Address: ConfettiBlack
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 56028b636e7dd734a9f9df5a935bf0e8
+    m_Address: ConfettiOrange
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 723c4fbe0bf3fc0439633e3231269353
+    m_Address: ConfettiWhite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 729e667663f3e54499ba12115ce5ccf8
+    m_Address: ConfettiYellow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 43a483e962a496141a2751d8caca973f
+    m_Address: BuildSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 31a9514f49caa894b83047e91d488e08
+    m_Address: ENTRY_POINT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5cdd72f8e24154940ae59cf8a2a6becd
+    m_Address: LEVEL
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8739e3bb10b736b4db91c37fddec02bf
+    m_Address: CAMERA
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d165dfcaa25da5547bcc572a0b08ac66
+    m_Address: NamesSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f7aac6d5ce08854fb28f1c11fc0295d
+    m_Address: GameConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bae26e5abb24f3744b48cd140bf6c3e0
+    m_Address: UIConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 29d459315a18f614bac5ec812e8eb5aa
+    m_Address: Assets/Scenes/Level 1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2f4299bea5db2e14b8957e644c46cd1b
+    m_Address: ECSConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2a8d7006f19a63a4a8e6e8b762e03b38, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ea3b3e5cfb47f164db44ea43a2202a17, type: 2}
+    - {fileID: 11400000, guid: 4847cb94c12a8514e835a701d19eba8a, type: 2}

@@ -1,0 +1,201 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &471096066778812594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471096066778812592}
+  - component: {fileID: 471096066778812595}
+  - component: {fileID: 471096066778812596}
+  - component: {fileID: 471096066778812597}
+  - component: {fileID: 2712150230028920928}
+  - component: {fileID: 4007605957423351693}
+  - component: {fileID: 7042282043143452824}
+  - component: {fileID: 6569903796448717184}
+  m_Layer: 0
+  m_Name: '[UI_CONFIG]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471096066778812592
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &471096066778812595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310a1dc899f54f32ac2772eed91bf1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ShowDelay>k__BackingField: 0.5
+  <AllChestsOpenDelay>k__BackingField: 1
+  <CloseDelay>k__BackingField: 1
+  <BetweenChestAppearDelay>k__BackingField: 0.1
+  <BackgroundAppear>k__BackingField:
+    StartingScale: 0
+    Duration: 0.3
+    Ease: 1
+  <BackgroundShrinkEffect>k__BackingField:
+    TargetScale: 0
+    Duration: 1
+    Ease: 26
+  <ElementsAppear>k__BackingField:
+    StartingScale: 0
+    Duration: 1
+    Ease: 24
+  <ElementsUpdate>k__BackingField:
+    StartingScale: 0.5
+    Duration: 0.5
+    Ease: 24
+  <ElementsFadeEffect>k__BackingField:
+    EndValue: 0
+    Duration: 0.3
+  <ChestBonusAppear>k__BackingField:
+    StartingScale: 0
+    Duration: 1
+    Ease: 24
+  <LootBoxesAwardAdd>k__BackingField:
+    StartingScale: 0.75
+    Duration: 1
+    Ease: 24
+--- !u!114 &471096066778812596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797147f7fa1c436d81578abf87e900b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UpdateEffect>k__BackingField:
+    StartingScale: 0.5
+    Duration: 0.5
+    Ease: 24
+--- !u!114 &471096066778812597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e374e3e9ce664fb9bb7cb9771a6aada2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ShowDelay>k__BackingField: 1
+  <WinAmountLabelUpdateStartDelay>k__BackingField: 1
+  <WinAmountLabelUpdateDuration>k__BackingField: 2
+  <WinAmountPulseDuration>k__BackingField: 3
+  <AllCoinsDropDelay>k__BackingField: 0.3
+  <WinAmountPulseEffect>k__BackingField:
+    TargetScale: 1.05
+    Duration: 0.5
+    Ease: 1
+    LoopType: 1
+  <BigWinShrinkEffect>k__BackingField:
+    TargetScale: 0
+    Duration: 0.5
+    Ease: 26
+--- !u!114 &2712150230028920928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bdb5031b83408597cdadf6fd080b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <KeyCountLabelUpdateEffect>k__BackingField:
+    StartingScale: 0.75
+    Duration: 1
+    Ease: 24
+  <ChestBonusAppearEffect>k__BackingField:
+    StartingScale: 0.75
+    Duration: 1
+    Ease: 24
+--- !u!114 &4007605957423351693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7379b8696d4543a0a833c8e41bcc4d87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ItemMultiplierLabelEffectSettings>k__BackingField:
+    StartingScale: 0.75
+    Duration: 1
+    Ease: 24
+--- !u!114 &7042282043143452824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a11e4db47548e0b7e228c03b60b47f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UpdateEffect>k__BackingField:
+    StartingScale: 0.8
+    Duration: 1
+    Ease: 24
+  <BigBonusIconBounceEffect>k__BackingField:
+    StartingScale: 0.5
+    Duration: 1
+    Ease: 24
+--- !u!114 &6569903796448717184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471096066778812594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc89d6a4a9a4e6fbb1ab91dec2920d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <AppearEffect>k__BackingField:
+    TargetScale: 0
+    Duration: 1
+    Ease: 26
+  <DisappearEffect>k__BackingField:
+    TargetScale: 0
+    Duration: 1
+    Ease: 26

@@ -1,0 +1,350 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1449833334515730475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449833334515730473}
+  - component: {fileID: 7861156984290193801}
+  - component: {fileID: 3513443928954010019}
+  - component: {fileID: 455892026072879757}
+  - component: {fileID: 1449833333502645376}
+  - component: {fileID: 1141656340}
+  m_Layer: 0
+  m_Name: '[LEVEL]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1449833334515730473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 1617.9886, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7861156984290193801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2be324affdc4b3aac5f2aaa5eba5dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ResetAccumulatedBonuses>k__BackingField: 1
+  <SpinControlType>k__BackingField: 0
+  <StartingRealBalance>k__BackingField: 20000
+  <AddRealBalanceAmount>k__BackingField: 2000
+  <StartBet>k__BackingField: 10
+  <BetStep>k__BackingField: 10
+  <MinBetValue>k__BackingField: 10
+  <MaxBetValue>k__BackingField: 100
+  <AfterCleanUpDelay>k__BackingField: 0.5
+  <DropTopItemsDelay>k__BackingField: 0.5
+  <CleanBoardDelay>k__BackingField: 0
+  <ShowBigWinDelay>k__BackingField: 0.1
+  <WinAmountLabelUpdateStartDelay>k__BackingField: 1.2
+  <WinAmountLabelUpdateDuration>k__BackingField: 2
+  <HideBigWinDelay>k__BackingField: 2
+  <AfterRemoveReturnToPoolDelay>k__BackingField: 2
+  <BetweenItemExplosionsDelay>k__BackingField: 0
+  <BoardRows>k__BackingField: 3
+  <BoardColumns>k__BackingField: 5
+  <DoIncludeTAndLShapedCombos>k__BackingField: 0
+  <SlotsYOffset>k__BackingField: 0
+  <SymbolSize>k__BackingField: 0.38
+  <BoardSlotsHeight>k__BackingField: 1.02
+  <BoardSlotsWidth>k__BackingField: 1.04
+  <DoUseItemsInSpinChances>k__BackingField: 1
+  <ItemsInSpinChances>k__BackingField:
+  - ItemsInSpin: 4
+    Weight: 5
+  - ItemsInSpin: 5
+    Weight: 10
+  - ItemsInSpin: 6
+    Weight: 20
+  - ItemsInSpin: 7
+    Weight: 70
+  <ItemsToWeights>k__BackingField:
+  - <Type>k__BackingField: 1
+    <Weight>k__BackingField: 1.4
+  - <Type>k__BackingField: 2
+    <Weight>k__BackingField: 2.5
+  - <Type>k__BackingField: 4
+    <Weight>k__BackingField: 0
+  - <Type>k__BackingField: 8
+    <Weight>k__BackingField: 3
+  - <Type>k__BackingField: 16
+    <Weight>k__BackingField: 1.6
+  - <Type>k__BackingField: 32
+    <Weight>k__BackingField: 1.6
+  - <Type>k__BackingField: 64
+    <Weight>k__BackingField: 1
+  - <Type>k__BackingField: 128
+    <Weight>k__BackingField: 1.4
+  <RoyalsInSpin>k__BackingField: 4
+  <CommonsInSpin>k__BackingField: 4
+  <SpecialSpinNumber>k__BackingField: 30
+  <RoyalsInSpecialSpin>k__BackingField: 4
+  <CommonsInSpecialSpin>k__BackingField: 4
+  <BonusAnnouncementItemsFadeDegree>k__BackingField: 0.15
+  <BonusAnnouncementItemsFadeDuration>k__BackingField: 0.3
+  <ItemFadeDuration>k__BackingField: 0.2
+  <ItemFadeAlphaValue>k__BackingField: 0.2
+  <DoFadeItemMultiplier>k__BackingField: 0
+  <ItemFadeMultiplier>k__BackingField: 3.5
+  <BetweenDicesRollDelay>k__BackingField: 0.2
+  <NoDiceComboSearchDelay>k__BackingField: 0.5
+  <AfterDiceRewardScreenCleanDelay>k__BackingField: 0.5
+  <DiceChances>k__BackingField:
+  - Side: 1
+    Weight: 10
+  - Side: 2
+    Weight: 8
+  - Side: 3
+    Weight: 6
+  - Side: 4
+    Weight: 4
+  - Side: 5
+    Weight: 2
+  - Side: 6
+    Weight: 1
+  <BetweenSegmentsFillDelay>k__BackingField: 0.2
+  <ProgressBarResetDelay>k__BackingField: 1
+  <ProgressBarBonus>k__BackingField: 2
+  <DropSpeed>k__BackingField: 10
+  <DropMaxSpeed>k__BackingField: 35
+  <DropAcceleration>k__BackingField: 60
+  <NewItemsDropDelay>k__BackingField: 0.1
+  <RowInBetweenDropDelay>k__BackingField: 0.03
+  <ColInBetweenDropDelay>k__BackingField: 0.05
+  <ExtraRows>k__BackingField: 5
+  <ExtraRowsPerColumnIncrease>k__BackingField: 2
+  <GapForNewItemsOnBoardTop>k__BackingField: 1.3
+  <LandDrawdown>k__BackingField: 0.25
+  <LandDuration>k__BackingField: 0.2
+  <LandVibrato>k__BackingField: 1
+  <LandElasticity>k__BackingField: 0
+  <DoSquashOnDown>k__BackingField: 0
+  <ShakeDuration>k__BackingField: 0.5
+  <ShakeCoef>k__BackingField: 0.1
+  <ShakeVibrato>k__BackingField: 10
+  <ShakeElasticity>k__BackingField: 0.5
+  <BonusAnnouncementShowDuration>k__BackingField: 1.2
+  <SliderFillDuration>k__BackingField: 0.4
+  <SliderFadeDuration>k__BackingField: 0.1
+  <SliderFillPercentToShrink>k__BackingField: 0.8
+  <BonusAmountPunchScaleAdd>k__BackingField: 0.5
+  <BonusAmountPunchDuration>k__BackingField: 0.4
+  <TrailSpeedCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <TrailFlightDuration>k__BackingField: 0.5
+  <TrailDestroyDelay>k__BackingField: 1
+  <MaxTrailParabolaHeightAmplitude>k__BackingField: 2.5
+  <MinTrailParabolaHeightAmplitude>k__BackingField: 1
+  <TrailInBetweenDelay>k__BackingField: 0.1
+  <IsSameTrajectory>k__BackingField: 0
+  <BigBonusItemAppearPercent>k__BackingField: 3
+  <MinimumTries>k__BackingField: 10
+  <MinimumFreeSpins>k__BackingField: 5
+  <FreeSpinsToAddWhenLacking>k__BackingField:
+    Type: 2
+    BonusValue: 2
+    Prefab: {fileID: 7608810764028092520, guid: b4c2767422f166c4397eded42a08f30f, type: 3}
+    GreyPrefab: {fileID: 0}
+    SpawnChance: 0
+  <EndBigBonusChance>k__BackingField: 25
+  <BigBonusChestBonuses>k__BackingField:
+  - Type: 2
+    BonusValue: 1
+    Prefab: {fileID: 7608810764028092520, guid: b4c2767422f166c4397eded42a08f30f, type: 3}
+    GreyPrefab: {fileID: 0}
+    SpawnChance: 50
+  - Type: 1
+    BonusValue: 1
+    Prefab: {fileID: 7608810764028092520, guid: aff16108388fb7d4695a3db9eb55e6ff, type: 3}
+    GreyPrefab: {fileID: 0}
+    SpawnChance: 50
+  <DicesToTries>k__BackingField:
+  - DicesNumber: 3
+    Tries: 4
+  - DicesNumber: 4
+    Tries: 6
+  - DicesNumber: 5
+    Tries: 8
+  <WildImplosionDuration>k__BackingField: 0.3
+  <WildExplosionDuration>k__BackingField: 1
+  <WildImplosionEase>k__BackingField: 17
+  <WildExplosionEase>k__BackingField: 24
+  <WildBonusInBetweenDelay>k__BackingField: 0.1
+  <FreeSpinsBonusAmount>k__BackingField: 5
+  <KeyCount>k__BackingField: 3
+  <LootBoxesScreenShowDelay>k__BackingField: 0
+  <LootBoxesScreenHideDelay>k__BackingField: 1.5
+  <LootBoxesBackgroundFadeOutDuration>k__BackingField: 0.3
+  <BetweenChestsActivationDelay>k__BackingField: 0.1
+  <LootBoxesBonusShowDuration>k__BackingField: 0.6
+  <ChestBonuses>k__BackingField:
+  - Type: 0
+    BonusValue: 50
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 25
+  - Type: 0
+    BonusValue: 100
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 25
+  - Type: 0
+    BonusValue: 150
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 20
+  - Type: 0
+    BonusValue: 200
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 15
+  - Type: 0
+    BonusValue: 250
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 10
+  - Type: 0
+    BonusValue: 1000
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 1
+  - Type: 0
+    BonusValue: 10
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 10
+  - Type: 0
+    BonusValue: 20
+    Prefab: {fileID: 7608810764028092520, guid: f9071c48e4e1ff74e9ad8e26a11bc9ad, type: 3}
+    GreyPrefab: {fileID: 7608810764028092520, guid: 625cb6a29d700fa43972068795f236e1, type: 3}
+    SpawnChance: 15
+  <DoOpenChestWithParticles>k__BackingField: 1
+  <ChipCount>k__BackingField: 5
+  <BetBonusSpinsDuration>k__BackingField: 3
+  <RiskScreenShowDelay>k__BackingField: 0
+  <RiskScreenFadeOutDuration>k__BackingField: 1
+  <AwardFlowDuration>k__BackingField: 1
+  <BigWinShowThreshold>k__BackingField: 100
+  <AllCoinsDropDelay>k__BackingField: 0.3
+  <BigWinLogoImplosionDuration>k__BackingField: 0.5
+  <SlotBorderPrefab>k__BackingField: {fileID: 6337648559336034048, guid: 4f866d4919864aa47aa1236ddc376937, type: 3}
+  <BorderFadeInDuration>k__BackingField: 0
+  <BorderFadeOutDuration>k__BackingField: 1.5
+  <BorderHorizOverlap>k__BackingField: -0.15
+  <BorderVertOverlap>k__BackingField: -0.15
+  <IsBorderMomentary>k__BackingField: 1
+  <NinjaTrailPrefab>k__BackingField: {fileID: 5767137507699380754, guid: f00f97c265fbfb04bb011d2ad9c72d41, type: 3}
+  <NinjaTrailDuration>k__BackingField: 0.475
+  <NinjaTrailAngle>k__BackingField: 15
+  <NinjaTrailDistanceCoef>k__BackingField: 1
+  <IsNinjaTrailActive>k__BackingField: 0
+--- !u!114 &3513443928954010019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3134ae1e6ce94cf8bcd4881a7c9270a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &455892026072879757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba680de22ff42eda20193527e6cde2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1449833333502645376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553873ca8c8d6554d97683f31aebb084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1141656340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449833334515730475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2ecbe9c5374fb7817f17ab24083336, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsActive>k__BackingField: 0
+  s00: 2
+  s01: 4
+  s02: 4
+  s03: 64
+  s04: 16
+  s10: 2
+  s11: 128
+  s12: 2
+  s13: 2
+  s14: 2
+  s20: 2
+  s21: 4
+  s22: 4
+  s23: 8
+  s24: 16
