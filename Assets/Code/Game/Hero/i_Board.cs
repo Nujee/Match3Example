@@ -1,4 +1,6 @@
-﻿using Code.Game.Main;
+﻿using Code.Game.Items;
+using Code.Game.Main;
+using Code.Game.Utils;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -12,7 +14,8 @@ namespace Code.Game.Hero
 
        // private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
-        
+        private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
+
         private readonly EcsWorldInject _world = default;
         
         public void Init(IEcsSystems systems)
@@ -39,8 +42,8 @@ namespace Code.Game.Hero
                 c_cell.BoardPosition = new Vector2Int(i, j);
                 c_cell.WorldPosition = new Vector3(worldX, worldY);
                 c_board.Cells[i, j] = world.PackEntity(cellEntity);
-                Object.Instantiate(GameObject.CreatePrimitive(PrimitiveType.Capsule), c_cell.WorldPosition,
-                    Quaternion.identity);
+
+                c_cell.SetRandomItem(_itemDataSet.Value, world, c_cell.WorldPosition);
             }
         }
     }

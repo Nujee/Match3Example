@@ -7,6 +7,6 @@ namespace Code.Game.Hero
     {
         public Vector2Int BoardPosition;
         public Vector3 WorldPosition;
-        public EcsPackedEntity AttachedItemPacked;// -1 if slot is empty
+        public EcsPackedEntity AttachedItemPacked;
     }
 }
