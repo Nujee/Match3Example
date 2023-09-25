@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardRows>k__BackingField
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardCellsWidth>k__BackingField
