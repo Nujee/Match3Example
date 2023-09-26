@@ -11,16 +11,14 @@ namespace Code.Game.Hero
     {
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
-        
+
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
 
-        private readonly EcsWorldInject _world = default;
-        
         public void Init(IEcsSystems systems)
         {
             var ls = _levelSettings.Value;
-            var world = _world.Value;
+            var world = systems.GetWorld();
             
             var boardEntity = world.NewEntity();
             ref var c_board = ref _boardPool.Value.Add(boardEntity);

@@ -121,6 +121,10 @@ MonoBehaviour:
     m_Address: Assets/GameObjects/Objects/Items/SetCrystal/Item1/ItemCrystal1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b4d1d647dfb65d144afd266c7533602d
+    m_Address: Assets/GameObjects/Objects/Items/SetCrystal/ItemDataSetCrystal.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2a8d7006f19a63a4a8e6e8b762e03b38, type: 2}
   m_SchemaSet:

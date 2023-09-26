@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 878360177, guid: 31a9514f49caa894b83047e91d488e08, type: 3}
+      propertyPath: <SymbolSet>k__BackingField.m_AssetGUID
+      value: b4d1d647dfb65d144afd266c7533602d
+      objectReference: {fileID: 0}
     - target: {fileID: 5509227746438132181, guid: 31a9514f49caa894b83047e91d488e08, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -604,15 +608,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardRows>k__BackingField
-      value: 10
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <BoardColumns>k__BackingField
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardCellsWidth>k__BackingField
-      value: 3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardSlotsHeight>k__BackingField
-      value: 5
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1141656340, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
@@ -624,6 +632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8878777525063432145, guid: 8739e3bb10b736b4db91c37fddec02bf, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8878777525063432150, guid: 8739e3bb10b736b4db91c37fddec02bf, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -646,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8878777526682160742, guid: 8739e3bb10b736b4db91c37fddec02bf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8878777526682160742, guid: 8739e3bb10b736b4db91c37fddec02bf, type: 3}
       propertyPath: m_LocalPosition.z
