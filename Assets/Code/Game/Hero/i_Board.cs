@@ -11,8 +11,7 @@ namespace Code.Game.Hero
     {
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
-
-       // private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
+        
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
 

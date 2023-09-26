@@ -109,6 +109,18 @@ MonoBehaviour:
     m_Address: ECSConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 53e54ae94a7ae1c49ad8dd9abc5cfd34
+    m_Address: Assets/GameObjects/Objects/Items/SetCrystal/Item1/Dark_Blue.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 04cc3385c0e73394e9cd3e6e62b30a69
+    m_Address: Assets/GameObjects/Objects/Items/SetCrystal/Item2/ItemCrystal2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5ad384508d9c349488aef3793a868612
+    m_Address: Assets/GameObjects/Objects/Items/SetCrystal/Item1/ItemCrystal1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2a8d7006f19a63a4a8e6e8b762e03b38, type: 2}
   m_SchemaSet:

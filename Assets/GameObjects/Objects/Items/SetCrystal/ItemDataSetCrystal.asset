@@ -15,13 +15,13 @@ MonoBehaviour:
   <Set>k__BackingField:
   - <Type>k__BackingField: 1
     <Prefab>k__BackingField:
-      m_AssetGUID: 
+      m_AssetGUID: 5ad384508d9c349488aef3793a868612
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
   - <Type>k__BackingField: 2
     <Prefab>k__BackingField:
-      m_AssetGUID: 
+      m_AssetGUID: 04cc3385c0e73394e9cd3e6e62b30a69
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
