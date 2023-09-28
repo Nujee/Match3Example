@@ -24,7 +24,7 @@ namespace Code.Game.Features.BoardRenewal
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                var renewBoardRequestt = _world.Value.NewEntity();
+                var renewBoardRequest = _world.Value.NewEntity();
                 _renewBoardPool.Value.Add(renewBoardRequest);
             }
             

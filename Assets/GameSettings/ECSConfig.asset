@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitSystems:
   - rid: 8242300343273914368
-  FeatureGroups: []
+  FeatureGroups:
+  - SystemType: 1
+    UpdateInterval: 0
+    Features:
+    - IsActive: 1
+      Feature:
+        rid: 8242300456434663424
   references:
     version: 2
     RefIds:
     - rid: 8242300343273914368
       type: {class: i_Board, ns: Code.Game.Hero, asm: MyGame}
+    - rid: 8242300456434663424
+      type: {class: BoardRenewalFeature, ns: Code.Game.Features.BoardRenewal, asm: MyGame}

@@ -7,7 +7,7 @@ namespace Code.Game.Features.ItemsDrop
     {
         public void Init(EcsSystems systems)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
