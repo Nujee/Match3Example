@@ -5,15 +5,15 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Code.Game.Features.BoardRenewal
+namespace Code.Game.Features.RenewBoard
 {
     public sealed class s_RenewBoard : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<r_RenewBoard>> _renewBoardRequests = default;
         private readonly EcsFilterInject<Inc<c_Board>> _boardsFilter = default;
 
-        private readonly EcsPoolInject<c_Cell> _cellPool = default;
         private readonly EcsPoolInject<r_RenewBoard> _renewBoardPool = default;
+        private readonly EcsPoolInject<c_Cell> _cellPool = default;
         private readonly EcsPoolInject<c_Item> _itemPool = default;
 
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
@@ -33,7 +33,7 @@ namespace Code.Game.Features.BoardRenewal
                 foreach (var boardEntity in _boardsFilter.Value)
                 {
                     ref var c_board = ref _boardsFilter.Pools.Inc1.Get(boardEntity);
-                    foreach (var cellPacked in c_board.Cells)
+                    foreach (var cellPacked in c_board.CellsPacked)
                     {
                         if (!cellPacked.Unpack(_world.Value, out var cellEntity)) { continue; }
                         ref var c_cell = ref _cellPool.Value.Get(cellEntity);
@@ -42,7 +42,7 @@ namespace Code.Game.Features.BoardRenewal
                         ref var c_item = ref _itemPool.Value.Get(attachedItemEntity);
                         
                         c_item.Data.Pool.Return(attachedItemEntity);
-                        c_cell.SetRandomItem(_itemDataSet.Value, _world.Value, c_cell.WorldPosition);
+                        c_cell.SetRandomItem(_world.Value, _itemDataSet.Value, c_cell.WorldPosition);
                     }
                 }
                 

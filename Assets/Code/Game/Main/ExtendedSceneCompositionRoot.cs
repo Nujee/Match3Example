@@ -1,4 +1,5 @@
-﻿using Code.MySubmodule.Main;
+﻿using Code.Game.Interactables.RenewButton;
+using Code.MySubmodule.Main;
 using UnityEngine;
 
 namespace Code.Game.Main
@@ -13,6 +14,7 @@ namespace Code.Game.Main
         protected override void InjectSceneObjects()
         {
             _injectParameters.Add(FindObjectOfType<LevelSettings>());
+            _injectParameters.Add(FindObjectOfType<RenewButtonView>());
         }
     }
 }

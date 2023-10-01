@@ -9,5 +9,14 @@ namespace Code.Game.Main
         [field: SerializeField] public int BoardColumns { get; private set; }
         [field: SerializeField] public float BoardCellsWidth { get; private set; }
         [field: SerializeField] public float BoardSlotsHeight { get; private set; }
+        [field: SerializeField] public float DropItemsInBetweenDelay { get; private set; }
+        [field: SerializeField] public float DropItemsStartSpeed { get; private set; }
+        [field: SerializeField] public float DropItemsMaxSpeed { get; private set; }
+        [field: SerializeField] public float DropItemsAcceleration { get; private set; }
+        [field: SerializeField] public float LandDrawdown { get; private set; }
+        [field: SerializeField] public float LandDuration { get; private set; }
+        [field: SerializeField] public int LandVibrato{ get; private set; }
+        [field: SerializeField] public float LandElasticity { get; private set; }
+        
     }
 }

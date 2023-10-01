@@ -8,10 +8,12 @@ namespace Code.Game.Utils
 {
     public static class Extensions
     {
-        public static void SetRandomItem(ref this c_Cell c_cell, ItemDataSet itemDataSet, EcsWorld world, Vector3 whereTo)
+        public static EcsPackedEntity SetRandomItem(ref this c_Cell c_cell, EcsWorld world, ItemDataSet itemDataSet, Vector3 whereTo)
         {
-            var randomItemEntity = itemDataSet.Set.Random().Pool.Get(whereTo, Quaternion.identity);
+            var randomItemEntity = itemDataSet.Set.Random()!.Pool.Get(whereTo, Quaternion.identity);
             c_cell.AttachedItemPacked = world.PackEntity(randomItemEntity);
+
+            return c_cell.AttachedItemPacked;
         }
     }
 }

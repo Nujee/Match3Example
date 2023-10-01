@@ -4,6 +4,9 @@ namespace Code.Game.Hero
 {
     public struct c_Board
     {
-        public EcsPackedEntity[,] Cells;
+        public int Rows;
+        public int Columns;
+        public BoardType Type;
+        public EcsPackedEntity[,] CellsPacked;
     }
 }
