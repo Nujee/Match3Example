@@ -2,6 +2,6 @@
 {
     public struct c_RenewBoard
     {
-        
+         
     }
 }
