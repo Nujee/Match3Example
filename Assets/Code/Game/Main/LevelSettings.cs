@@ -17,6 +17,7 @@ namespace Code.Game.Main
         [field: SerializeField] public float LandDuration { get; private set; }
         [field: SerializeField] public int LandVibrato{ get; private set; }
         [field: SerializeField] public float LandElasticity { get; private set; }
+        [field: SerializeField] public float PreFindCombosDelay { get; private set; }
         
     }
 }
