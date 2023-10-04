@@ -7,8 +7,8 @@ namespace Code.Game.Features.FindCombos
     {
         public void Init(EcsSystems systems)
         {
-            // systems.Add(new s_SetUpFindCombos());
-            // systems.Add(new s_ProcessEachCombo());  
+            systems.Add(new s_SetUpFindCombos());
+            systems.Add(new s_ProcessFindCombos());  
         }
     }
 }

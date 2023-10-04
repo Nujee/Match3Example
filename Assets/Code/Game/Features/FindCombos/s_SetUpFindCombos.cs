@@ -8,7 +8,7 @@ namespace Code.Game.Features.FindCombos
     public sealed class s_SetUpFindCombos : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<r_FindCombos>> _findCombosFilter = default;
-        
+
         private readonly EcsPoolInject<c_FindCombos> _findCombosPool = default;
         
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
@@ -19,13 +19,20 @@ namespace Code.Game.Features.FindCombos
         {
             foreach (var featureRequest in _findCombosFilter.Value)
             {
-                var featureEntity = _world.Value.NewEntity();
-                _findCombosPool.Value.Add(featureEntity);
+                ref var r_feature = ref _findCombosFilter.Pools.Inc1.Get(featureRequest);
 
-                var myTrain = systems.AddTrainTo(featureEntity);
-                myTrain.AddStep<s_ProcessFindCombos>(_levelSettings.Value.PreFindCombosDelay);
+                if (!r_feature.BoardPacked.Unpack(_world.Value, out _))
+                {
+                    var featureEntity = _world.Value.NewEntity();
+                    ref var c_feature = ref _findCombosPool.Value.Add(featureEntity);
+                
+                    c_feature.BoardPacked = r_feature.BoardPacked;
+                    
+                    var myTrain = systems.AddTrainTo(featureEntity);
+                    myTrain.AddStep<s_ProcessFindCombos>(_levelSettings.Value.PreFindCombosDelay);
 
-                _world.Value.DelEntity(featureRequest);
+                    _world.Value.DelEntity(featureRequest);
+                }
             }
         }
     }

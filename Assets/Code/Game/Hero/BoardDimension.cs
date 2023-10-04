@@ -2,7 +2,7 @@
 {
     public enum BoardDimension
     {
-        Row = 1,
-        Column = 2
+        Row = 0,
+        Column = 1
     }
 }
