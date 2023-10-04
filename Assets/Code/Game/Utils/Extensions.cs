@@ -15,5 +15,16 @@ namespace Code.Game.Utils
 
             return c_cell.AttachedItemPacked;
         }
+        
+        public static ItemType GetAttachedItemType(this EcsPackedEntity cellPacked, EcsWorld world)
+        {
+            if (!cellPacked.Unpack(world, out var cellEntity)) { return ItemType.None; }
+            ref var c_cell = ref world.GetPool<c_Cell>().Get(cellEntity);
+            
+            if (!c_cell.AttachedItemPacked.Unpack(world, out var attachedItemEntity)) { return ItemType.None; }
+            ref var c_attachedItem = ref world.GetPool<c_Item>().Get(attachedItemEntity);
+
+            return c_attachedItem.Data.Type;
+        }
     }
 }
