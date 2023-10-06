@@ -20,7 +20,7 @@ namespace Code.Game.Interactables.RenewButton
             _renewButton.Value.Init();
             _renewButton.Value.Button.onClick.AddListener(() =>
             {
-                _world.Value.AddRequest(new r_ChangeRenewButtonState(false));
+                _world.Value.AddRequest(new r_ChangeCleanButtonState(false));
                 
                 foreach (var boardEntity in _boardsFilter.Value)
                 {

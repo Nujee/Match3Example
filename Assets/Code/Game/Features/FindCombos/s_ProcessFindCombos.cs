@@ -44,7 +44,7 @@ namespace Code.Game.Features.FindCombos
                 }
                 else
                 {
-                    _world.Value.AddRequest(new r_ChangeRenewButtonState(true));
+                    _world.Value.AddRequest(new r_ChangeCleanButtonState(true));
                 }
                 
                 _featureFilter.Pools.Inc1.Del(featureEntity);

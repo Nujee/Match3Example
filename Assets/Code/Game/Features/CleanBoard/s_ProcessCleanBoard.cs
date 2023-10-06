@@ -2,6 +2,7 @@
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.MySubmodule.ECS.Components.UnityComponents;
+using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using DG.Tweening;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
@@ -15,7 +16,6 @@ namespace Code.Game.Features.CleanBoard
         
         private readonly EcsPoolInject<c_Item> _itemPool = default;
         private readonly EcsPoolInject<c_Transform> _transformPool = default;
-        private readonly EcsPoolInject<r_ChangeRenewButtonState> _activateRenewButtonPool = default;
 
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
 
@@ -42,11 +42,10 @@ namespace Code.Game.Features.CleanBoard
 
                     var targetSpeed = dropData.Speed + _levelSettings.Value.DropItemsAcceleration * Time.deltaTime;
                     dropData.Speed = Mathf.Clamp(targetSpeed, 0f, _levelSettings.Value.DropItemsMaxSpeed);
-                    var frameShift = dropData.Speed * Time.deltaTime;
-                    var newPosition = c_itemTransform.Value.position + frameShift * Vector3.down;
+                    var frameShift = dropData.Speed * Time.deltaTime * Vector3.down;
+                    var newPosition = c_itemTransform.Value.position + frameShift;
                     
-                    var hasReachedTargetHeight = (newPosition.y < dropData.TargetPosition.y);
-                    if (hasReachedTargetHeight)
+                    if (newPosition.y < dropData.TargetPosition.y)
                     {
                         if (dropData.IsDisposable)
                         {
@@ -69,9 +68,8 @@ namespace Code.Game.Features.CleanBoard
 
                 if (c_feature.DropDataList.Count == 0)
                 {
-                    var request = _world.Value.NewEntity();
-                    _activateRenewButtonPool.Value.Add(request);
-                        
+                    _world.Value.AddRequest(new r_ChangeCleanButtonState(true));
+                    
                     _world.Value.DelEntity(featureEntity);
                 }
             }

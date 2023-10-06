@@ -32,7 +32,7 @@ namespace Code.Game.Features.CleanBoard
                 if (!r_featureRequest.BoardPacked.Unpack(_world.Value, out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
-                for (var row = c_board.Rows - 1; row >= 0; row--)
+                for (var row = 0; row < c_board.Rows; row++)
                 for (var col = 0; col < c_board.Columns; col++)
                 {
                     var cellPacked = c_board.CellsPacked[row, col];
@@ -42,7 +42,7 @@ namespace Code.Game.Features.CleanBoard
                     if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
                     
                     var dropDisplacement = c_board.Rows * _levelSettings.Value.BoardSlotsHeight * Vector3.down;
-                    var dropDelayOffset = row + col;
+                    var dropDelayOffset = ((c_board.Rows - 1) - row) + col;
                     
                     var oldItemDropData = new DropData
                     {

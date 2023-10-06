@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Game.Features.CleanBoard
 {
-    public struct DropData
+    public sealed class DropData
     {
         public EcsPackedEntity ItemPacked;
         public float Delay;

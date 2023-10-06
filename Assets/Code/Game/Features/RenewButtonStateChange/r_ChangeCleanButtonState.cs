@@ -1,10 +1,10 @@
 ﻿namespace Code.Game.Features.RenewButtonStateChange
 {
-    public struct r_ChangeRenewButtonState
+    public struct r_ChangeCleanButtonState
     {
         public bool IsActive;
         
-        public r_ChangeRenewButtonState(bool isActive)
+        public r_ChangeCleanButtonState(bool isActive)
         {
             IsActive = isActive;
         }

@@ -6,7 +6,7 @@ namespace Code.Game.Features.RenewButtonStateChange
 {
     public sealed class s_RenewButtonStateChange : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<r_ChangeRenewButtonState>> featureRequestFilter = default;
+        private readonly EcsFilterInject<Inc<r_ChangeCleanButtonState>> featureRequestFilter = default;
 
         private readonly EcsCustomInject<RenewButtonView> _cleanButton = default;
         
