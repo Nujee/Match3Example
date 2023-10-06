@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Code.Game.Features.RenewButtonStateChange;
+using Code.Game.Features.CleanButtonStateChange;
 using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;

@@ -1,4 +1,4 @@
-﻿using Code.Game.Features.RenewButtonStateChange;
+﻿using Code.Game.Features.CleanButtonStateChange;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.MySubmodule.ECS.Components.UnityComponents;

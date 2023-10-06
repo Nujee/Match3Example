@@ -1,4 +1,4 @@
-﻿namespace Code.Game.Features.RenewButtonStateChange
+﻿namespace Code.Game.Features.CleanButtonStateChange
 {
     public struct r_ChangeCleanButtonState
     {

@@ -1,5 +1,5 @@
 ﻿using Code.Game.Features.CleanBoard;
-using Code.Game.Features.RenewButtonStateChange;
+using Code.Game.Features.CleanButtonStateChange;
 using Code.Game.Hero;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Leopotam.EcsLite;

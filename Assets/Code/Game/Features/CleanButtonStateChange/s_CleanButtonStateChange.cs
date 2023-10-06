@@ -2,9 +2,9 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
-namespace Code.Game.Features.RenewButtonStateChange
+namespace Code.Game.Features.CleanButtonStateChange
 {
-    public sealed class s_RenewButtonStateChange : IEcsRunSystem
+    public sealed class s_CleanButtonStateChange : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<r_ChangeCleanButtonState>> featureRequestFilter = default;
 
