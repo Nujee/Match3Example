@@ -7,11 +7,11 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Code.Game.Features.DropItems
+namespace Code.Game.Features.CleanBoard
 {
-    public sealed class s_ProcessEachItemDropping : IEcsRunSystem
+    public sealed class s_ProcessCleanBoard : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<c_DropItems>> _dropItemsFilter = default;
+        private readonly EcsFilterInject<Inc<c_CleanBoard>> _dropItemsFilter = default;
         
         private readonly EcsPoolInject<c_Item> _itemPool = default;
         private readonly EcsPoolInject<c_Transform> _transformPool = default;
@@ -45,7 +45,8 @@ namespace Code.Game.Features.DropItems
                     var frameShift = dropData.Speed * Time.deltaTime;
                     var newPosition = c_itemTransform.Value.position + frameShift * Vector3.down;
                     
-                    if (newPosition.y < dropData.TargetPosition.y)
+                    var hasReachedTargetHeight = (newPosition.y < dropData.TargetPosition.y);
+                    if (hasReachedTargetHeight)
                     {
                         if (dropData.IsDisposable)
                         {

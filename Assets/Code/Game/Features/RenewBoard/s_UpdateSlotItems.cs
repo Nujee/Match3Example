@@ -1,4 +1,4 @@
-﻿using Code.Game.Features.DropItems;
+﻿using Code.Game.Features.CleanBoard;
 using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
@@ -15,7 +15,7 @@ namespace Code.Game.Features.RenewBoard
         
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
-        private readonly EcsPoolInject<r_DropItems> _dropItemsPool = default;
+        private readonly EcsPoolInject<r_CleanBoard> _dropItemsPool = default;
         
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;

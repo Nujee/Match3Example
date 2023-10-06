@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace Code.Game.Features.DropItems
+namespace Code.Game.Features.CleanBoard
 {
     public class DropData
     {

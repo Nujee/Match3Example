@@ -1,4 +1,4 @@
-﻿using Code.Game.Features.DropItems;
+﻿using Code.Game.Features.CleanBoard;
 using Code.Game.Features.RenewButtonStateChange;
 using Code.Game.Hero;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
@@ -9,10 +9,7 @@ namespace Code.Game.Interactables.RenewButton
 {
     public sealed class i_RenewButton : IEcsInitSystem
     {
-        //TODO: rewrite cuz temp
-        private readonly EcsFilterInject<Inc<c_Board>> _boardFilter = default;
-
-        private readonly EcsPoolInject<r_DropItems> _renewBoardRequestPool = default;
+        private readonly EcsFilterInject<Inc<c_Board>> _boardsFilter = default;
 
         private readonly EcsCustomInject<RenewButtonView> _renewButton = default;
 
@@ -24,16 +21,15 @@ namespace Code.Game.Interactables.RenewButton
             _renewButton.Value.Button.onClick.AddListener(() =>
             {
                 _world.Value.AddRequest(new r_ChangeRenewButtonState(false));
-
-                //_world.Value.AddRequest<r_DropItems());
                 
-                var renewBoardRequest = _world.Value.NewEntity();
-                ref var r_renewBoard = ref _renewBoardRequestPool.Value.Add(renewBoardRequest);
-                //TODO: rewrite cuz temp
-                foreach (var boardEntity in _boardFilter.Value)
+                foreach (var boardEntity in _boardsFilter.Value)
                 {
-                    r_renewBoard.BoardPacked = _world.Value.PackEntity(boardEntity);
-                    break;
+                    ref var c_board = ref _boardsFilter.Pools.Inc1.Get(boardEntity);
+                    if (c_board.IsRenewable)
+                    {
+                        var boardPacked = _world.Value.PackEntity(boardEntity);
+                        _world.Value.AddRequest(new r_CleanBoard(boardPacked));
+                    }
                 }
             });
         }

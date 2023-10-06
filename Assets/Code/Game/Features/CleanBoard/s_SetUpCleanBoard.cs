@@ -6,13 +6,13 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Code.Game.Features.DropItems
+namespace Code.Game.Features.CleanBoard
 {
-    public sealed class s_SetUpItemsDrop : IEcsRunSystem
+    public sealed class s_SetUpCleanBoard : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<r_DropItems>> _featureRequestsFilter = default;
+        private readonly EcsFilterInject<Inc<r_CleanBoard>> _featureRequestsFilter = default;
 
-        private readonly EcsPoolInject<c_DropItems> _featurePool = default;
+        private readonly EcsPoolInject<c_CleanBoard> _featurePool = default;
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
 
@@ -26,13 +26,10 @@ namespace Code.Game.Features.DropItems
             foreach (var featureRequest in _featureRequestsFilter.Value)
             {
                 ref var r_featureRequest = ref _featureRequestsFilter.Pools.Inc1.Get(featureRequest);
-
                 var featureEntity = _world.Value.NewEntity();
                 ref var c_feature  = ref _featurePool.Value.Add(featureEntity);
                 
                 if (!r_featureRequest.BoardPacked.Unpack(_world.Value, out var boardEntity)) { continue; }
-                c_feature.BoardPacked = r_featureRequest.BoardPacked;
-                
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
                 for (var row = c_board.Rows - 1; row >= 0; row--)
