@@ -35,7 +35,7 @@ namespace Code.Game.Features.DropItems
                 
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
-                for (var row = 0; row < c_board.Rows; row++)
+                for (var row = c_board.Rows - 1; row >= 0; row--)
                 for (var col = 0; col < c_board.Columns; col++)
                 {
                     var cellPacked = c_board.CellsPacked[row, col];
@@ -44,21 +44,21 @@ namespace Code.Game.Features.DropItems
                     
                     if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
                     
-                    var dropDelta = c_board.Rows * _levelSettings.Value.BoardSlotsHeight * Vector3.up;
-                    var dropDelayOffset = (c_board.Rows - 1 - row) + col;
+                    var dropDisplacement = c_board.Rows * _levelSettings.Value.BoardSlotsHeight * Vector3.down;
+                    var dropDelayOffset = row + col;
                     
                     var oldItemDropData = new DropData
                     {
                         ItemPacked = c_cell.AttachedItemPacked,
                         Delay = dropDelayOffset * _levelSettings.Value.DropItemsInBetweenDelay,
-                        TargetPosition = c_cell.WorldPosition - dropDelta,
+                        TargetPosition = c_cell.WorldPosition + dropDisplacement,
                         IsDisposable = true
                     };
                     c_feature.DropDataList.Add(oldItemDropData);
                     
                     var newItemDropData = new DropData
                     {
-                        ItemPacked = c_cell.SetRandomItem(_world.Value, _itemDataSet.Value, c_cell.WorldPosition + dropDelta),
+                        ItemPacked = c_cell.SetRandomItem(_world.Value, _itemDataSet.Value, c_cell.WorldPosition - dropDisplacement),
                         Delay = (dropDelayOffset + c_board.Rows) * _levelSettings.Value.DropItemsInBetweenDelay,
                         TargetPosition = c_cell.WorldPosition,
                         IsDisposable = false

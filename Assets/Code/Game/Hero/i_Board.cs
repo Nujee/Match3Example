@@ -24,11 +24,11 @@ namespace Code.Game.Hero
             var boardEntity = _world.Value.NewEntity();
             ref var c_board = ref _boardPool.Value.Add(boardEntity);
 
-            c_board.Type = BoardType.Main;
+            //c_board.Type = BoardType.Main;
             
             c_board.Rows = ls.BoardRows;
             c_board.Columns = ls.BoardColumns;
-            
+            c_board.IsRenewable = true;
             c_board.CellsPacked = new EcsPackedEntity[c_board.Rows, c_board.Columns];
             
             for (var i = 0; i < c_board.Rows; i++)

@@ -1,6 +1,7 @@
 ﻿using Code.Game.Features.DropItems;
 using Code.Game.Features.RenewButtonStateChange;
 using Code.Game.Hero;
+using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
@@ -12,7 +13,6 @@ namespace Code.Game.Interactables.RenewButton
         private readonly EcsFilterInject<Inc<c_Board>> _boardFilter = default;
 
         private readonly EcsPoolInject<r_DropItems> _renewBoardRequestPool = default;
-        private readonly EcsPoolInject<r_DeactivateRenewButton> _deactivateRenewButtonRequestPool = default;
 
         private readonly EcsCustomInject<RenewButtonView> _renewButton = default;
 
@@ -23,8 +23,9 @@ namespace Code.Game.Interactables.RenewButton
             _renewButton.Value.Init();
             _renewButton.Value.Button.onClick.AddListener(() =>
             {
-                var deactivateRenewButtonRequest = _world.Value.NewEntity();
-                _deactivateRenewButtonRequestPool.Value.Add(deactivateRenewButtonRequest);
+                _world.Value.AddRequest(new r_ChangeRenewButtonState(false));
+
+                //_world.Value.AddRequest<r_DropItems());
                 
                 var renewBoardRequest = _world.Value.NewEntity();
                 ref var r_renewBoard = ref _renewBoardRequestPool.Value.Add(renewBoardRequest);

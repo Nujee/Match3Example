@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Code.Game.Features.RenewButtonStateChange;
 using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
+using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
@@ -42,7 +44,7 @@ namespace Code.Game.Features.FindCombos
                 }
                 else
                 {
-                    // call some "standby" - feature request (?)
+                    _world.Value.AddRequest(new r_ChangeRenewButtonState(true));
                 }
                 
                 _featureFilter.Pools.Inc1.Del(featureEntity);

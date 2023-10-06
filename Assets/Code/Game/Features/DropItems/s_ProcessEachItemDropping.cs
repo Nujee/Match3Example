@@ -15,7 +15,7 @@ namespace Code.Game.Features.DropItems
         
         private readonly EcsPoolInject<c_Item> _itemPool = default;
         private readonly EcsPoolInject<c_Transform> _transformPool = default;
-        private readonly EcsPoolInject<r_ActivateRenewButton> _activateRenewButtonPool = default;
+        private readonly EcsPoolInject<r_ChangeRenewButtonState> _activateRenewButtonPool = default;
 
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
 

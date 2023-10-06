@@ -6,7 +6,7 @@ namespace Code.Game.Hero
     {
         public int Rows;
         public int Columns;
-        public BoardType Type;
         public EcsPackedEntity[,] CellsPacked;
+        public bool IsRenewable;
     }
 }
