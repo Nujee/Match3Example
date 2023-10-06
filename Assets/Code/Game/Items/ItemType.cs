@@ -7,6 +7,8 @@
         ItemValue1 = 1,
         ItemValue2 = 2,
         ItemValue3 = 3,
-        ItemValue4 = 4
+        ItemValue4 = 4,
+        
+        Wild = 5
     }
 }

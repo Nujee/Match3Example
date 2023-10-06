@@ -16,7 +16,7 @@ namespace Code.Game.Utils
             return c_cell.AttachedItemPacked;
         }
         
-        public static ItemType GetAttachedItemType(this EcsPackedEntity cellPacked, EcsWorld world)
+        public static ItemType GetAttachedItemType(this EcsWorld world, EcsPackedEntity cellPacked)
         {
             if (!cellPacked.Unpack(world, out var cellEntity)) { return ItemType.None; }
             ref var c_cell = ref world.GetPool<c_Cell>().Get(cellEntity);
