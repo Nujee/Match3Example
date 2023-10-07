@@ -890,6 +890,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <MinComboSize>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardCellsWidth>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
@@ -902,7 +906,23 @@ PrefabInstance:
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <PreFindCombosDelay>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ShakeComboDuration>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsStartSpeed>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <PreRemoveComboDelay>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ShakeComboMagnitude>k__BackingField
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}

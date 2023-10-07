@@ -21,6 +21,6 @@ namespace Code.Game.Main
         [field: SerializeField] public int MinComboSize { get; private set; }
         [field: SerializeField] public float PreRemoveComboDelay { get; private set; }
         [field: SerializeField] public float ShakeComboDuration { get; private set; }
-
+        [field: SerializeField] public float ShakeComboMagnitude { get; private set; }
     }
 }

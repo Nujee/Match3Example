@@ -42,7 +42,7 @@ namespace Code.Game.Features.FindCombos
                         .OrderByDescending(x => x.comboCells.Count)
                         .First();
 
-                    _world.Value.AddRequest(new r_RemoveCombo(1f, largestCombo));
+                    _world.Value.AddRequest(new r_RemoveCombo(largestCombo));
                 }
                 else
                 {

@@ -21,18 +21,28 @@ MonoBehaviour:
     Features:
     - IsActive: 1
       Feature:
-        rid: 8425778644204126208
+        rid: 8425778760942616577
     - IsActive: 1
       Feature:
-        rid: 8425778644204126209
+        rid: 8425778760942616576
+    - IsActive: 1
+      Feature:
+        rid: 8425778760942616578
+    - IsActive: 1
+      Feature:
+        rid: 8425778760942616579
   references:
     version: 2
     RefIds:
     - rid: 8242300343273914368
       type: {class: i_Board, ns: Code.Game.Hero, asm: MyGame}
-    - rid: 8425778644204126208
-      type: {class: RenewButtonStateChangeFeature, ns: Code.Game.Features.RenewButtonStateChange, asm: MyGame}
-    - rid: 8425778644204126209
-      type: {class: ItemsDropFeature, ns: Code.Game.Features.DropItems, asm: MyGame}
     - rid: 8425778644204126210
       type: {class: i_RenewButton, ns: Code.Game.Interactables.RenewButton, asm: MyGame}
+    - rid: 8425778760942616576
+      type: {class: CleanBoardFeature, ns: Code.Game.Features.CleanBoard, asm: MyGame}
+    - rid: 8425778760942616577
+      type: {class: CleanButtonStateChangeFeature, ns: Code.Game.Features.CleanButtonStateChange, asm: MyGame}
+    - rid: 8425778760942616578
+      type: {class: FindCombosFeature, ns: Code.Game.Features.FindCombos, asm: MyGame}
+    - rid: 8425778760942616579
+      type: {class: RemoveComboFeature, ns: Code.Game.Features.RemoveCombo, asm: MyGame}

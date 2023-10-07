@@ -1,9 +1,7 @@
 ﻿using Code.Game.Main;
-using Code.Game.Utils;
 using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnityEngine;
 
 namespace Code.Game.Features.RemoveCombo
 {
@@ -27,25 +25,29 @@ namespace Code.Game.Features.RemoveCombo
                 
                 var featureEntity = _world.Value.NewEntity();
                 ref var c_feature  = ref _removeComboPool.Value.Add(featureEntity);
+                
+                c_feature.ComboTypeToCellsPacked = r_feature.ComboTypeToCellsPacked;
+                c_feature.ShakeDurationTotal = ls.ShakeComboDuration;
+                c_feature.ShakeMagnitude = ls.ShakeComboMagnitude;
 
                 var comboRemoveTrain = systems.AddTrainTo(featureEntity);
                 comboRemoveTrain.AddStep<s_ShakeComboItems>(ls.PreRemoveComboDelay);
                 comboRemoveTrain.AddStep<s_ExplodeComboItems>(ls.ShakeComboDuration);
                 comboRemoveTrain.AddStep<s_ScatterNonComboItems>();
                 
-                if (r_feature.RemoveDelay > 0f)
-                {
-                    r_feature.RemoveDelay -= Time.deltaTime;
-                }
-                else
-                {
-                    foreach (var cellPacked in r_feature.ComboTypeToCellsPacked.cells)
-                    {
-                        ref var c_item = ref cellPacked.GetAttachedItem(_world.Value, out var itemEntity);
-                        c_item.Data.Pool.Return(itemEntity);
-                    }
-                    _world.Value.DelEntity(featureRequest);
-                }
+                // if (r_feature.RemoveDelay > 0f)
+                // {
+                //     r_feature.RemoveDelay -= Time.deltaTime;
+                // }
+                // else
+                // {
+                //     foreach (var cellPacked in r_feature.ComboTypeToCellsPacked.cells)
+                //     {
+                //         ref var c_item = ref cellPacked.GetAttachedItem(_world.Value, out var itemEntity);
+                //         c_item.Data.Pool.Return(itemEntity);
+                //     }
+                //     _world.Value.DelEntity(featureRequest);
+                // }
             }
         }
     }
