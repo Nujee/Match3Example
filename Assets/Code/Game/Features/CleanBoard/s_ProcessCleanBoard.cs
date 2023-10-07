@@ -68,7 +68,6 @@ namespace Code.Game.Features.CleanBoard
 
                 if (c_feature.DropDataList.Count == 0)
                 {
-                    "Do I End process clean board?".Log();
                     _world.Value.AddRequest(new r_FindCombos(c_feature.BoardPacked));
                     _world.Value.DelEntity(featureEntity);
                 }

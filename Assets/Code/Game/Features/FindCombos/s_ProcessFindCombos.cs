@@ -29,7 +29,6 @@ namespace Code.Game.Features.FindCombos
         {
             foreach (var featureEntity in _featureFilter.Value)
             {
-                "We see process find combos".Log();
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
 
                 if (!c_feature.BoardPacked.Unpack(_world.Value, out var boardEntity)) continue;
@@ -43,8 +42,6 @@ namespace Code.Game.Features.FindCombos
                         .OrderByDescending(x => x.comboCells.Count)
                         .First();
 
-                    $"largest combo: {largestCombo.type} {largestCombo.comboCells.Count}".Log();
-                    
                     _world.Value.AddRequest(new r_RemoveCombo(1f, largestCombo));
                 }
                 else
@@ -61,20 +58,21 @@ namespace Code.Game.Features.FindCombos
         {
             var allCombos = new List<(ItemType, List<EcsPackedEntity>)>();
             
-            var rowCombos = GetCombosInDimension(BoardDimension.Row);
-            var columnCombos = GetCombosInDimension(BoardDimension.Column);
+            var rowCombos = GetCombosInDimension(true);
+            var columnCombos = GetCombosInDimension(false);
             
             allCombos.AddRange(rowCombos);
             allCombos.AddRange(columnCombos);
         
             return allCombos;
             
-            IEnumerable<(ItemType, List<EcsPackedEntity>)> GetCombosInDimension(BoardDimension dimension)
+            IEnumerable<(ItemType, List<EcsPackedEntity>)> GetCombosInDimension(bool isRowSearch)
             {
                 var combosInDimension = new List<(ItemType , List<EcsPackedEntity>)>();
             
-                var dimensionSize = cells.GetLength((int)dimension);
-                for (var dimensionArrayIndex = 0; dimensionArrayIndex < dimensionSize; dimensionArrayIndex++)
+                var searchDimensionSize = cells.GetLength(isRowSearch ? 0 : 1);
+                var otherDimensionSize = cells.GetLength(isRowSearch ? 1 : 0);
+                for (var dimensionArrayIndex = 0; dimensionArrayIndex < searchDimensionSize; dimensionArrayIndex++)
                 {
                     var allCombosInArray = GetCombosInArray(dimensionArrayIndex);
                     combosInDimension.AddRange(allCombosInArray);
@@ -86,30 +84,23 @@ namespace Code.Game.Features.FindCombos
                 {
                     var combosInArray = new List<(ItemType, List<EcsPackedEntity>)>();
                     
-                    for (var comboBeginIndex = 0; comboBeginIndex < dimensionSize - 1; comboBeginIndex++)
+                    for (var comboBeginIndex = 0; comboBeginIndex < otherDimensionSize - 1; comboBeginIndex++)
                     {
-                        var firstCellInCombo = dimension switch
-                        {
-                            BoardDimension.Row => cells[dimensionArrayIndex, comboBeginIndex],
-                            BoardDimension.Column => cells[comboBeginIndex, dimensionArrayIndex],
-                            _ => throw new ArgumentOutOfRangeException()
-                        };
-                        
-                        var currentCombo = new List<EcsPackedEntity>();
+                        var firstCellInCombo = isRowSearch
+                            ? cells[dimensionArrayIndex, comboBeginIndex]
+                            : cells[comboBeginIndex, dimensionArrayIndex];
 
+                        var currentCombo = new List<EcsPackedEntity>();
                         var currentCellType = firstCellInCombo.GetAttachedItem(_world.Value).Data.Type;
-                        var wildsTailLength = currentCellType == ItemType.None ? 1 : 0;
+                        var wildsTailLength = 0;// currentCellType == ItemType.None ? 1 : 0;
                         currentCombo.Add(firstCellInCombo);
                         
-                        for (var comboNextIndex = comboBeginIndex + 1; comboNextIndex < dimensionSize; comboNextIndex++)
+                        for (var comboNextIndex = comboBeginIndex + 1; comboNextIndex < otherDimensionSize; comboNextIndex++)
                         {
-                            var nextCellInCombo = dimension switch
-                            {
-                                BoardDimension.Row => cells[dimensionArrayIndex, comboNextIndex],
-                                BoardDimension.Column => cells[comboNextIndex, dimensionArrayIndex],
-                                _ => throw new ArgumentOutOfRangeException()
-                            };
-                
+                            var nextCellInCombo = isRowSearch
+                                ? cells[dimensionArrayIndex, comboNextIndex]
+                                : cells[comboNextIndex, dimensionArrayIndex];
+
                             var nextCellType = nextCellInCombo.GetAttachedItem(_world.Value).Data.Type;
                             var isCurrentTypeWild = (currentCellType == ItemType.None);
                             var isNextOfCurrentType = (nextCellType == currentCellType);

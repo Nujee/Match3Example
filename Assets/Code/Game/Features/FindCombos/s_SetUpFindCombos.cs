@@ -23,7 +23,6 @@ namespace Code.Game.Features.FindCombos
                 ref var r_feature = ref _featureRequestFilter.Pools.Inc1.Get(featureRequest);
                 if (r_feature.BoardPacked.Unpack(_world.Value, out _))
                 {
-                    "Am I ehre?".Log();
                     var featureEntity = _world.Value.NewEntity();
                     ref var c_feature = ref _findCombosPool.Value.Add(featureEntity);
                 
