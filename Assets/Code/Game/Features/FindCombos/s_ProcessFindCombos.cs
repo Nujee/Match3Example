@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Code.Game.Features.CleanButtonStateChange;
+using Code.Game.Features.RemoveCombo;
 using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
+using Code.MySubmodule.DebugTools.MyLogger;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
@@ -27,6 +29,7 @@ namespace Code.Game.Features.FindCombos
         {
             foreach (var featureEntity in _featureFilter.Value)
             {
+                "We see process find combos".Log();
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
 
                 if (!c_feature.BoardPacked.Unpack(_world.Value, out var boardEntity)) continue;
@@ -40,14 +43,17 @@ namespace Code.Game.Features.FindCombos
                         .OrderByDescending(x => x.comboCells.Count)
                         .First();
 
-                    // call some "remove combo" - feature request
+                    $"largest combo: {largestCombo.type} {largestCombo.comboCells.Count}".Log();
+                    
+                    _world.Value.AddRequest(new r_RemoveCombo(1f, largestCombo));
                 }
                 else
                 {
                     _world.Value.AddRequest(new r_ChangeCleanButtonState(true));
                 }
                 
-                _featureFilter.Pools.Inc1.Del(featureEntity);
+                _world.Value.DelEntity(featureEntity);
+                //_featureFilter.Pools.Inc1.Del(featureEntity);
             }
         }
         
@@ -79,8 +85,7 @@ namespace Code.Game.Features.FindCombos
                 IEnumerable<(ItemType, List<EcsPackedEntity>)> GetCombosInArray(int dimensionArrayIndex)
                 {
                     var combosInArray = new List<(ItemType, List<EcsPackedEntity>)>();
-            
-                    var dimensionSize = cells.GetLength((int)dimension);
+                    
                     for (var comboBeginIndex = 0; comboBeginIndex < dimensionSize - 1; comboBeginIndex++)
                     {
                         var firstCellInCombo = dimension switch
@@ -92,7 +97,7 @@ namespace Code.Game.Features.FindCombos
                         
                         var currentCombo = new List<EcsPackedEntity>();
 
-                        var currentCellType = _world.Value.GetAttachedItemType(firstCellInCombo);
+                        var currentCellType = firstCellInCombo.GetAttachedItem(_world.Value).Data.Type;
                         var wildsTailLength = currentCellType == ItemType.None ? 1 : 0;
                         currentCombo.Add(firstCellInCombo);
                         
@@ -105,7 +110,7 @@ namespace Code.Game.Features.FindCombos
                                 _ => throw new ArgumentOutOfRangeException()
                             };
                 
-                            var nextCellType = _world.Value.GetAttachedItemType(nextCellInCombo);
+                            var nextCellType = nextCellInCombo.GetAttachedItem(_world.Value).Data.Type;
                             var isCurrentTypeWild = (currentCellType == ItemType.None);
                             var isNextOfCurrentType = (nextCellType == currentCellType);
                             var isNextWild = (nextCellType == ItemType.None); 

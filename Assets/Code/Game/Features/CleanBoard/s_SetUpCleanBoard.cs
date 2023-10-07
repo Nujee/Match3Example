@@ -30,6 +30,8 @@ namespace Code.Game.Features.CleanBoard
                 ref var c_feature  = ref _featurePool.Value.Add(featureEntity);
                 
                 if (!r_featureRequest.BoardPacked.Unpack(_world.Value, out var boardEntity)) { continue; }
+                c_feature.BoardPacked = r_featureRequest.BoardPacked;
+                
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
                 for (var row = 0; row < c_board.Rows; row++)
@@ -39,7 +41,7 @@ namespace Code.Game.Features.CleanBoard
                     if (!cellPacked.Unpack(_world.Value, out var cellEntity)) { continue; }
                     ref var c_cell = ref _cellPool.Value.Get(cellEntity);
                     
-                    if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
+                   // if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
                     
                     var dropDisplacement = c_board.Rows * _levelSettings.Value.BoardSlotsHeight * Vector3.down;
                     var dropDelayOffset = ((c_board.Rows - 1) - row) + col;

@@ -1,4 +1,5 @@
-﻿using Code.Game.Hero;
+﻿using System;
+using Code.Game.Hero;
 using Code.Game.Items;
 using Code.MySubmodule.Math;
 using Leopotam.EcsLite;
@@ -16,15 +17,34 @@ namespace Code.Game.Utils
             return c_cell.AttachedItemPacked;
         }
         
-        public static ItemType GetAttachedItemType(this EcsWorld world, EcsPackedEntity cellPacked)
+        public static ref c_Item GetAttachedItem(this EcsPackedEntity cellPacked, EcsWorld world)
         {
-            if (!cellPacked.Unpack(world, out var cellEntity)) { return ItemType.None; }
-            ref var c_cell = ref world.GetPool<c_Cell>().Get(cellEntity);
-            
-            if (!c_cell.AttachedItemPacked.Unpack(world, out var attachedItemEntity)) { return ItemType.None; }
-            ref var c_attachedItem = ref world.GetPool<c_Item>().Get(attachedItemEntity);
+            if (!cellPacked.Unpack(world, out var cellEntity))
+                throw new Exception("Can't unpack cell entity");
 
-            return c_attachedItem.Data.Type;
+            var attachedItemEntity = GetAttachedItemInternal(world, cellEntity);
+    
+            return ref world.GetPool<c_Item>().Get(attachedItemEntity);
+        }
+        
+        public static ref c_Item GetAttachedItem(this EcsPackedEntity cellPacked, EcsWorld world, out int attachedItemEntity)
+        {
+            if (!cellPacked.Unpack(world, out var cellEntity))
+                throw new Exception("Can't unpack cell entity");
+
+            attachedItemEntity = GetAttachedItemInternal(world, cellEntity);
+    
+            return ref world.GetPool<c_Item>().Get(attachedItemEntity);
+        }
+
+        private static int GetAttachedItemInternal(EcsWorld world, int cellEntity)
+        {
+            ref var c_cell = ref world.GetPool<c_Cell>().Get(cellEntity);
+
+            if (!c_cell.AttachedItemPacked.Unpack(world, out var attachedItemEntity))
+                throw new Exception("Can't unpack attached item entity");
+
+            return attachedItemEntity;
         }
     }
 }

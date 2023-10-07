@@ -36,8 +36,8 @@ namespace Code.Game.Hero
             {
                 // Calculate world position centered from (0, 0, 0).
                 // Rows go top-down.
-                // Columns go left-right.
                 var worldX = ls.BoardCellsWidth * (j - (ls.BoardColumns - 1) / 2f);
+                // Columns go left-right.
                 var worldY = ls.BoardSlotsHeight * ((ls.BoardRows - 1) / 2f - i);
 
                 var cellEntity = _world.Value.NewEntity();

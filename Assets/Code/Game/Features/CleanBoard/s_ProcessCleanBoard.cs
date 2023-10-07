@@ -1,6 +1,7 @@
-﻿using Code.Game.Features.CleanButtonStateChange;
+﻿using Code.Game.Features.FindCombos;
 using Code.Game.Items;
 using Code.Game.Main;
+using Code.MySubmodule.DebugTools.MyLogger;
 using Code.MySubmodule.ECS.Components.UnityComponents;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using DG.Tweening;
@@ -57,7 +58,6 @@ namespace Code.Game.Features.CleanBoard
                             c_itemTransform.Value.DOPunchPosition(Vector3.down * ls.LandDrawdown, 
                                 ls.LandDuration, ls.LandVibrato, ls.LandElasticity);
                         }
-                        
                         c_feature.DropDataList.Remove(dropData);
                     }
                     else
@@ -68,8 +68,8 @@ namespace Code.Game.Features.CleanBoard
 
                 if (c_feature.DropDataList.Count == 0)
                 {
-                    _world.Value.AddRequest(new r_ChangeCleanButtonState(true));
-                    
+                    "Do I End process clean board?".Log();
+                    _world.Value.AddRequest(new r_FindCombos(c_feature.BoardPacked));
                     _world.Value.DelEntity(featureEntity);
                 }
             }
