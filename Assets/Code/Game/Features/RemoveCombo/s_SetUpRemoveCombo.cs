@@ -1,5 +1,6 @@
 ﻿using Code.Game.Utils;
 using Code.MySubmodule.DebugTools.MyLogger;
+using Code.MySubmodule.ECS.Components.UnityComponents;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -28,7 +29,11 @@ namespace Code.Game.Features.RemoveCombo
                     foreach (var cellPacked in r_feature.ComboTypeToCellsPacked.cells)
                     {
                         ref var c_item = ref cellPacked.GetAttachedItem(_world.Value, out var itemEntity);
-                        c_item.Data.Pool.Return(itemEntity);
+                        ref var c_itemTransform = ref _world.Value.GetPool<c_Transform>().Get(itemEntity);
+
+                        c_itemTransform.Value.position += (Vector3.up + Vector3.right) * 5f;
+
+                        // c_item.Data.Pool.Return(itemEntity);
                     }
                     
                     _world.Value.DelEntity(featureRequest);
