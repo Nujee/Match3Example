@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Game.Features.CleanButtonStateChange;
 using Code.Game.Features.RemoveCombo;
@@ -7,7 +6,6 @@ using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
-using Code.MySubmodule.DebugTools.MyLogger;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
@@ -50,7 +48,6 @@ namespace Code.Game.Features.FindCombos
                 }
                 
                 _world.Value.DelEntity(featureEntity);
-                //_featureFilter.Pools.Inc1.Del(featureEntity);
             }
         }
         
@@ -72,6 +69,7 @@ namespace Code.Game.Features.FindCombos
             
                 var searchDimensionSize = cells.GetLength(isRowSearch ? 0 : 1);
                 var otherDimensionSize = cells.GetLength(isRowSearch ? 1 : 0);
+                
                 for (var dimensionArrayIndex = 0; dimensionArrayIndex < searchDimensionSize; dimensionArrayIndex++)
                 {
                     var allCombosInArray = GetCombosInArray(dimensionArrayIndex);

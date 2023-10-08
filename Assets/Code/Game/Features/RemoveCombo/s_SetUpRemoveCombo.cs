@@ -35,6 +35,8 @@ namespace Code.Game.Features.RemoveCombo
                 comboRemoveTrain.AddStep<s_ExplodeComboItems>(ls.ShakeComboDuration);
                 comboRemoveTrain.AddStep<s_ScatterNonComboItems>();
                 
+                _world.Value.DelEntity(featureRequest);
+                
                 // if (r_feature.RemoveDelay > 0f)
                 // {
                 //     r_feature.RemoveDelay -= Time.deltaTime;

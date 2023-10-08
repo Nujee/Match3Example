@@ -24,6 +24,10 @@ namespace Code.Game.Features.RemoveCombo
             foreach (var featureEntity in _featureFilter.Value)
             {
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
+
+                var currentProgress = c_feature.ShakeDurationElapsed / c_feature.ShakeDurationTotal;
+                c_feature.ShakeDurationElapsed += Time.deltaTime;
+                
                 foreach (var comboCellPacked in c_feature.ComboTypeToCellsPacked.cells)
                 {
                     if (!comboCellPacked.Unpack(_world.Value, out var comboCellEntity)) { continue; }
@@ -31,14 +35,13 @@ namespace Code.Game.Features.RemoveCombo
                     
                     ref var c_item = ref comboCellPacked.GetAttachedItem(_world.Value, out var itemEntity);
                     ref var c_itemTransform = ref _transformPool.Value.Get(itemEntity);
-                    
+
                     if (c_feature.ShakeDurationElapsed < c_feature.ShakeDurationTotal)
                     {
-                        c_feature.ShakeDurationElapsed += Time.deltaTime;
-                        
-                        var currentProgress = c_feature.ShakeDurationElapsed / c_feature.ShakeDurationTotal;
-                        var shift = c_feature.ShakeMagnitude * currentProgress * (Vector3)Random.insideUnitCircle;
+                        var shift = c_feature.ShakeMagnitude * currentProgress.Square() * (Vector3)Random.insideUnitCircle;
                         c_itemTransform.Value.position = c_cell.WorldPosition + shift;
+                        var toScale = Mathf.Lerp(1f, 0.9f, currentProgress.Square());
+                        c_itemTransform.Value.localScale = toScale * Vector3.one;
                     }
                     else
                     {
