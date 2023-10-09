@@ -27,6 +27,7 @@ namespace Code.Game.Features.RemoveCombo
                 ref var c_feature  = ref _removeComboPool.Value.Add(featureEntity);
                 
                 c_feature.ComboTypeToCellsPacked = r_feature.ComboTypeToCellsPacked;
+                c_feature.BoardPacked = r_feature.BoardPacked;
                 c_feature.ShakeDurationTotal = ls.ShakeComboDuration;
                 c_feature.ShakeMagnitude = ls.ShakeComboMagnitude;
 
@@ -36,20 +37,6 @@ namespace Code.Game.Features.RemoveCombo
                 comboRemoveTrain.AddStep<s_ScatterNonComboItems>();
                 
                 _world.Value.DelEntity(featureRequest);
-                
-                // if (r_feature.RemoveDelay > 0f)
-                // {
-                //     r_feature.RemoveDelay -= Time.deltaTime;
-                // }
-                // else
-                // {
-                //     foreach (var cellPacked in r_feature.ComboTypeToCellsPacked.cells)
-                //     {
-                //         ref var c_item = ref cellPacked.GetAttachedItem(_world.Value, out var itemEntity);
-                //         c_item.Data.Pool.Return(itemEntity);
-                //     }
-                //     _world.Value.DelEntity(featureRequest);
-                // }
             }
         }
     }

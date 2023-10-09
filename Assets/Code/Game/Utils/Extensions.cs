@@ -17,13 +17,14 @@ namespace Code.Game.Utils
             return c_cell.AttachedItemPacked;
         }
         
+        //TODO: refactor; remove duplicates; handle exceptions better; move to submodule
         public static ref c_Item GetAttachedItem(this EcsPackedEntity cellPacked, EcsWorld world)
         {
             if (!cellPacked.Unpack(world, out var cellEntity))
                 throw new Exception("Can't unpack cell entity");
-
+        
             var attachedItemEntity = GetAttachedItemInternal(world, cellEntity);
-    
+        
             return ref world.GetPool<c_Item>().Get(attachedItemEntity);
         }
         
@@ -31,19 +32,19 @@ namespace Code.Game.Utils
         {
             if (!cellPacked.Unpack(world, out var cellEntity))
                 throw new Exception("Can't unpack cell entity");
-
+        
             attachedItemEntity = GetAttachedItemInternal(world, cellEntity);
-    
+        
             return ref world.GetPool<c_Item>().Get(attachedItemEntity);
         }
-
+        
         private static int GetAttachedItemInternal(EcsWorld world, int cellEntity)
         {
             ref var c_cell = ref world.GetPool<c_Cell>().Get(cellEntity);
-
+        
             if (!c_cell.AttachedItemPacked.Unpack(world, out var attachedItemEntity))
                 throw new Exception("Can't unpack attached item entity");
-
+        
             return attachedItemEntity;
         }
     }

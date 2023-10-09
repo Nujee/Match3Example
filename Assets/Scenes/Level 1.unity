@@ -894,6 +894,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ScatterForce>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardCellsWidth>k__BackingField
       value: 1.5
       objectReference: {fileID: 0}
@@ -911,7 +915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <ShakeComboDuration>k__BackingField
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsStartSpeed>k__BackingField
@@ -923,7 +927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <ShakeComboMagnitude>k__BackingField
-      value: 10
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsAcceleration>k__BackingField

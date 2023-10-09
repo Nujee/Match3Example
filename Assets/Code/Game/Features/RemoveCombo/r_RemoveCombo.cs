@@ -7,10 +7,12 @@ namespace Code.Game.Features.RemoveCombo
     public struct r_RemoveCombo
     {
         public (ItemType type, List<EcsPackedEntity> cells) ComboTypeToCellsPacked;
+        public EcsPackedEntity BoardPacked;
         
-        public r_RemoveCombo((ItemType type, List<EcsPackedEntity> cells) comboTypeToCellsPacked)
+        public r_RemoveCombo((ItemType type, List<EcsPackedEntity> cells) comboTypeToCellsPacked, EcsPackedEntity boardPacked)
         {
             ComboTypeToCellsPacked = comboTypeToCellsPacked;
+            BoardPacked = boardPacked;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Code.Game.Hero;
+using Code.Game.Items;
 using Code.Game.Utils;
-using Code.MySubmodule.DebugTools.MyLogger;
 using Code.MySubmodule.ECS.Components.UnityComponents;
 using Code.MySubmodule.ECS.Features.RequestTrain;
 using Code.MySubmodule.Math;
@@ -15,6 +15,7 @@ namespace Code.Game.Features.RemoveCombo
         private readonly EcsFilterInject<Inc<Step<s_ShakeComboItems>, c_RemoveCombo>> _featureFilter = default;
         
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
+        private readonly EcsPoolInject<c_Item> _itemPool = default;
         private readonly EcsPoolInject<c_Transform> _transformPool = default;
         
         private readonly EcsWorldInject _world = default;
@@ -33,20 +34,23 @@ namespace Code.Game.Features.RemoveCombo
                     if (!comboCellPacked.Unpack(_world.Value, out var comboCellEntity)) { continue; }
                     ref var c_cell = ref _cellPool.Value.Get(comboCellEntity);
                     
-                    ref var c_item = ref comboCellPacked.GetAttachedItem(_world.Value, out var itemEntity);
-                    ref var c_itemTransform = ref _transformPool.Value.Get(itemEntity);
+                    if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out var attachedItemEntity)) { continue; }
+                    ref var c_item = ref _itemPool.Value.Get(attachedItemEntity);
+                    ref var c_itemTransform = ref _transformPool.Value.Get(attachedItemEntity);
 
                     if (c_feature.ShakeDurationElapsed < c_feature.ShakeDurationTotal)
                     {
+                        //TODO: do something with this square() - thing maybe?
                         var shift = c_feature.ShakeMagnitude * currentProgress.Square() * (Vector3)Random.insideUnitCircle;
                         c_itemTransform.Value.position = c_cell.WorldPosition + shift;
+                        //TODO: remove hardcoded values
                         var toScale = Mathf.Lerp(1f, 0.9f, currentProgress.Square());
                         c_itemTransform.Value.localScale = toScale * Vector3.one;
                     }
                     else
                     {
                         c_itemTransform.Value.position = c_cell.WorldPosition;
-                        c_item.Data.Pool.Return(itemEntity);
+                        c_item.Data.Pool.Return(attachedItemEntity);
                         _featureFilter.Pools.Inc1.Del(featureEntity);
                     }
                 }
