@@ -2,6 +2,7 @@
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
+using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace Code.Game.Features.CleanBoard
         {
             foreach (var featureRequest in _featureRequestsFilter.Value)
             {
+                var ls = _levelSettings.Value;
+                
                 ref var r_featureRequest = ref _featureRequestsFilter.Pools.Inc1.Get(featureRequest);
                 var featureEntity = _world.Value.NewEntity();
                 ref var c_feature  = ref _featurePool.Value.Add(featureEntity);
@@ -43,14 +46,15 @@ namespace Code.Game.Features.CleanBoard
                     
                    // if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
                     
-                    var dropDisplacement = c_board.Rows * _levelSettings.Value.BoardSlotsHeight * Vector3.down;
+                    var dropDisplacement = c_board.Rows * ls.BoardSlotsHeight * Vector3.down;
                     var dropDelayOffset = ((c_board.Rows - 1) - row) + col;
                     
                     var oldItemDropData = new DropData
                     {
                         ItemPacked = c_cell.AttachedItemPacked,
-                        Delay = dropDelayOffset * _levelSettings.Value.DropItemsInBetweenDelay,
+                        Delay = dropDelayOffset * ls.DropItemsInBetweenDelay,
                         TargetPosition = c_cell.WorldPosition + dropDisplacement,
+                        Speed = ls.DropItemsStartSpeed,
                         IsDisposable = true
                     };
                     c_feature.DropDataList.Add(oldItemDropData);
@@ -58,12 +62,16 @@ namespace Code.Game.Features.CleanBoard
                     var newItemDropData = new DropData
                     {
                         ItemPacked = c_cell.SetRandomItem(_world.Value, _itemDataSet.Value, c_cell.WorldPosition - dropDisplacement),
-                        Delay = (dropDelayOffset + c_board.Rows) * _levelSettings.Value.DropItemsInBetweenDelay,
+                        Delay = (dropDelayOffset + c_board.Rows) * ls.DropItemsInBetweenDelay,
                         TargetPosition = c_cell.WorldPosition,
+                        Speed = ls.DropItemsStartSpeed,
                         IsDisposable = false
                     };
                     c_feature.DropDataList.Add(newItemDropData);
                 }
+                
+                var cleanTrain = systems.AddTrainTo(featureEntity);
+                cleanTrain.AddStep<s_ProcessCleanBoard>();
                 
                 _world.Value.DelEntity(featureRequest);
             }

@@ -1,10 +1,9 @@
 ﻿using Code.Game.Features.FindCombos;
 using Code.Game.Items;
 using Code.Game.Main;
-using Code.MySubmodule.DebugTools.MyLogger;
+using Code.Game.Utils;
 using Code.MySubmodule.ECS.Components.UnityComponents;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
-using DG.Tweening;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -26,8 +25,6 @@ namespace Code.Game.Features.CleanBoard
         {
             foreach (var featureEntity in _dropItemsFilter.Value)
             {
-                var ls = _levelSettings.Value;
-                
                 ref var c_feature = ref _dropItemsFilter.Pools.Inc1.Get(featureEntity);
 
                 for (var i = 0; i < c_feature.DropDataList.Count; i++)
@@ -54,9 +51,9 @@ namespace Code.Game.Features.CleanBoard
                         }
                         else
                         {
+                            var ls = _levelSettings.Value;
                             c_itemTransform.Value.position = dropData.TargetPosition;
-                            c_itemTransform.Value.DOPunchPosition(Vector3.down * ls.LandDrawdown, 
-                                ls.LandDuration, ls.LandVibrato, ls.LandElasticity);
+                            c_itemTransform.Value.DOPunchPosition(Vector3.down * ls.LandDrawdown, ls.LandTween);
                         }
                         c_feature.DropDataList.Remove(dropData);
                     }

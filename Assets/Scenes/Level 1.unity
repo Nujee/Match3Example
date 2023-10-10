@@ -895,11 +895,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <ScatterForce>k__BackingField
-      value: 3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardCellsWidth>k__BackingField
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ScatterDuration>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <BoardSlotsHeight>k__BackingField
@@ -908,6 +912,14 @@ PrefabInstance:
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsMaxSpeed>k__BackingField
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <LandTween>k__BackingField.Vibrato
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <LandTween>k__BackingField.Duration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <PreFindCombosDelay>k__BackingField
@@ -919,7 +931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsStartSpeed>k__BackingField
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <PreRemoveComboDelay>k__BackingField
@@ -930,12 +942,36 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <LandTween>k__BackingField.Elasticity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ScatterTween>k__BackingField.Vibrato
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsAcceleration>k__BackingField
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ScatterTween>k__BackingField.Duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
       propertyPath: <DropItemsInBetweenDelay>k__BackingField
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <ScatterTween>k__BackingField.Elasticity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <LandTweenSettings>k__BackingField.Vibrato
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861156984290193801, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
+      propertyPath: <LandTweenSettings>k__BackingField.Duration
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1141656340, guid: 5cdd72f8e24154940ae59cf8a2a6becd, type: 3}
