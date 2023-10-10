@@ -5,9 +5,9 @@ namespace Code.Game.Utils
 {
     public static class DOTweenExtensions
     {
-        public static void DOPunchPosition(this Transform transform, Vector3 punchForce, TweenSettings settings)
+        public static Tweener DOPunchPosition(this Transform transform, Vector3 punchForce, TweenSettings settings)
         {
-            transform.DOPunchPosition(punchForce, settings.Duration, settings.Vibrato, settings.Elasticity);
+            return transform.DOPunchPosition(punchForce, settings.Duration, settings.Vibrato, settings.Elasticity);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Code.Game.Features.CleanBoard
         public void Init(EcsSystems systems)
         {
             systems.Add(new s_SetUpCleanBoard());
-            systems.Add(new s_ProcessCleanBoard());
         }
     }
 }

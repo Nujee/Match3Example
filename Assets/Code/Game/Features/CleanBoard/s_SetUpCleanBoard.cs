@@ -1,8 +1,10 @@
-﻿using Code.Game.Hero;
+﻿using System.Collections.Generic;
+using Code.Game.Features.DropItems;
+using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
-using Code.MySubmodule.ECS.Features.RequestTrain;
+using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -12,68 +14,62 @@ namespace Code.Game.Features.CleanBoard
     public sealed class s_SetUpCleanBoard : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<r_CleanBoard>> _featureRequestsFilter = default;
-
-        private readonly EcsPoolInject<c_CleanBoard> _featurePool = default;
+        
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
 
         private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
 
-        private readonly EcsWorldInject _world = default;
-        
         public void Run(IEcsSystems systems)
         {
             foreach (var featureRequest in _featureRequestsFilter.Value)
             {
+                var world = systems.GetWorld();
                 var ls = _levelSettings.Value;
-                
+
                 ref var r_featureRequest = ref _featureRequestsFilter.Pools.Inc1.Get(featureRequest);
-                var featureEntity = _world.Value.NewEntity();
-                ref var c_feature  = ref _featurePool.Value.Add(featureEntity);
                 
-                if (!r_featureRequest.BoardPacked.Unpack(_world.Value, out var boardEntity)) { continue; }
-                c_feature.BoardPacked = r_featureRequest.BoardPacked;
-                
+                if (!r_featureRequest.BoardPacked.Unpack(world, out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
+                var dropDataList = new List<DropData>();
+                
                 for (var row = 0; row < c_board.Rows; row++)
                 for (var col = 0; col < c_board.Columns; col++)
                 {
                     var cellPacked = c_board.CellsPacked[row, col];
-                    if (!cellPacked.Unpack(_world.Value, out var cellEntity)) { continue; }
+                    
+                    if (!cellPacked.Unpack(world, out var cellEntity)) { continue; }
                     ref var c_cell = ref _cellPool.Value.Get(cellEntity);
-                    
-                   // if (!c_cell.AttachedItemPacked.Unpack(_world.Value, out _)) { continue; }
-                    
+
                     var dropDisplacement = c_board.Rows * ls.BoardSlotsHeight * Vector3.down;
-                    var dropDelayOffset = ((c_board.Rows - 1) - row) + col;
+                    var slotPositionOffset = ((c_board.Rows - 1) - row) + col;
                     
                     var oldItemDropData = new DropData
                     {
                         ItemPacked = c_cell.AttachedItemPacked,
-                        Delay = dropDelayOffset * ls.DropItemsInBetweenDelay,
+                        Delay = slotPositionOffset * ls.DropItemsInBetweenDelay,
                         TargetPosition = c_cell.WorldPosition + dropDisplacement,
                         Speed = ls.DropItemsStartSpeed,
                         IsDisposable = true
                     };
-                    c_feature.DropDataList.Add(oldItemDropData);
+                    dropDataList.Add(oldItemDropData);
                     
                     var newItemDropData = new DropData
                     {
-                        ItemPacked = c_cell.SetRandomItem(_world.Value, _itemDataSet.Value, c_cell.WorldPosition - dropDisplacement),
-                        Delay = (dropDelayOffset + c_board.Rows) * ls.DropItemsInBetweenDelay,
+                        ItemPacked = c_cell.SetRandomItem(world, _itemDataSet.Value, c_cell.WorldPosition - dropDisplacement),
+                        Delay = (slotPositionOffset + c_board.Rows) * ls.DropItemsInBetweenDelay,
                         TargetPosition = c_cell.WorldPosition,
                         Speed = ls.DropItemsStartSpeed,
                         IsDisposable = false
                     };
-                    c_feature.DropDataList.Add(newItemDropData);
+                    dropDataList.Add(newItemDropData);
                 }
+
+                world.AddRequest(new r_DropItems(r_featureRequest.BoardPacked, dropDataList));
                 
-                var cleanTrain = systems.AddTrainTo(featureEntity);
-                cleanTrain.AddStep<s_ProcessCleanBoard>();
-                
-                _world.Value.DelEntity(featureRequest);
+                world.DelEntity(featureRequest);
             }
         }
     }

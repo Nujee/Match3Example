@@ -18,6 +18,8 @@ namespace Code.Game.Features.TopUp
                 var featureEntity = _world.Value.NewEntity();
                 ref var c_feature  = ref _topUpPool.Value.Add(featureEntity);
                 
+                
+                
                 _world.Value.DelEntity(featureRequest);
             }
         }
