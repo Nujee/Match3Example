@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 
 namespace Code.Game.Features.RemoveCombo
 {
-    public sealed class RemoveComboFeature : IFeature
+    public sealed class f_RemoveCombo : IFeature
     {
         public void Init(EcsSystems systems)
         {

@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 
 namespace Code.Game.Features.DropItems
 {
-    public sealed class DropItemsFeature : IFeature
+    public sealed class f_DropItems : IFeature
     {
         public void Init(EcsSystems systems)
         {

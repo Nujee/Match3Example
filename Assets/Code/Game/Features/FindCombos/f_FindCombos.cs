@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 
 namespace Code.Game.Features.FindCombos
 {
-    public sealed class FindCombosFeature : IFeature
+    public sealed class f_FindCombos : IFeature
     {
         public void Init(EcsSystems systems)
         {

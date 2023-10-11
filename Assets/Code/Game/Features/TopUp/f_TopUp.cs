@@ -1,13 +1,13 @@
 ﻿using Code.MySubmodule.ECS.Features;
 using Leopotam.EcsLite;
 
-namespace Code.Game.Features.CleanBoard
+namespace Code.Game.Features.TopUp
 {
-    public sealed class CleanBoardFeature : IFeature
+    public sealed class f_TopUp : IFeature
     {
         public void Init(EcsSystems systems)
         {
-            systems.Add(new s_SetUpCleanBoard());
+            systems.Add(new s_SetUpTopUp());
         }
     }
 }

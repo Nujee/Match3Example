@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 
 namespace Code.Game.Features.CleanButtonStateChange
 {
-    public sealed class CleanButtonStateChangeFeature : IFeature
+    public sealed class f_CleanButtonStateChange : IFeature
     {
         public void Init(EcsSystems systems)
         {

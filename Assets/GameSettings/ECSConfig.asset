@@ -12,37 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4edb0e7c22c594aaddb59c93415dae, type: 3}
   m_Name: ECSConfig
   m_EditorClassIdentifier: 
-  InitSystems:
-  - rid: 8242300343273914368
-  - rid: 8425778644204126210
-  FeatureGroups:
-  - SystemType: 1
-    UpdateInterval: 0
-    Features:
-    - IsActive: 1
-      Feature:
-        rid: 8425778760942616577
-    - IsActive: 1
-      Feature:
-        rid: 8425778760942616576
-    - IsActive: 1
-      Feature:
-        rid: 8425778760942616578
-    - IsActive: 1
-      Feature:
-        rid: 8425778760942616579
+  InitSystems: []
+  FeatureGroups: []
   references:
     version: 2
-    RefIds:
-    - rid: 8242300343273914368
-      type: {class: i_Board, ns: Code.Game.Hero, asm: MyGame}
-    - rid: 8425778644204126210
-      type: {class: i_RenewButton, ns: Code.Game.Interactables.RenewButton, asm: MyGame}
-    - rid: 8425778760942616576
-      type: {class: CleanBoardFeature, ns: Code.Game.Features.CleanBoard, asm: MyGame}
-    - rid: 8425778760942616577
-      type: {class: CleanButtonStateChangeFeature, ns: Code.Game.Features.CleanButtonStateChange, asm: MyGame}
-    - rid: 8425778760942616578
-      type: {class: FindCombosFeature, ns: Code.Game.Features.FindCombos, asm: MyGame}
-    - rid: 8425778760942616579
-      type: {class: RemoveComboFeature, ns: Code.Game.Features.RemoveCombo, asm: MyGame}
+    RefIds: []
