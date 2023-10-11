@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using Code.Game.Features.DropItems;
+using Code.Game.Features.FindCombos;
 using Code.Game.Hero;
 using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
+using Code.MySubmodule.DebugTools.MyLogger;
+using Code.MySubmodule.ECS.EndGame;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
@@ -29,7 +32,6 @@ namespace Code.Game.Features.CleanBoard
                 var ls = _levelSettings.Value;
 
                 ref var r_featureRequest = ref _featureRequestsFilter.Pools.Inc1.Get(featureRequest);
-                
                 if (!r_featureRequest.BoardPacked.Unpack(world, out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
@@ -66,9 +68,9 @@ namespace Code.Game.Features.CleanBoard
                     };
                     dropDataList.Add(newItemDropData);
                 }
-
-                world.AddRequest(new r_DropItems(r_featureRequest.BoardPacked, dropDataList));
                 
+                world.AddRequest(new r_DropItems(r_featureRequest.BoardPacked, dropDataList));
+
                 world.DelEntity(featureRequest);
             }
         }

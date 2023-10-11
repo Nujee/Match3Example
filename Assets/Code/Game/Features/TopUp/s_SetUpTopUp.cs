@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using Code.MySubmodule.DebugTools.MyLogger;
+using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 
 namespace Code.Game.Features.TopUp
@@ -17,8 +18,8 @@ namespace Code.Game.Features.TopUp
             {
                 var featureEntity = _world.Value.NewEntity();
                 ref var c_feature  = ref _topUpPool.Value.Add(featureEntity);
-                
-                
+                 
+                "start top up!".Log();
                 
                 _world.Value.DelEntity(featureRequest);
             }

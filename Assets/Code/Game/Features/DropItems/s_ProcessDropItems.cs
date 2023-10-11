@@ -12,7 +12,7 @@ namespace Code.Game.Features.DropItems
 {
     public sealed class s_ProcessDropItems : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<c_DropItems>> _dropItemsFilter = default;
+        private readonly EcsFilterInject<Inc<c_DropItems>> _featureFilter = default;
         
         private readonly EcsPoolInject<c_Item> _itemPool = default;
         private readonly EcsPoolInject<c_Transform> _transformPool = default;
@@ -21,12 +21,12 @@ namespace Code.Game.Features.DropItems
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var featureEntity in _dropItemsFilter.Value)
+            foreach (var featureEntity in _featureFilter.Value)
             {
                 var world = systems.GetWorld();
                 var ls = _levelSettings.Value;
                 
-                ref var c_feature = ref _dropItemsFilter.Pools.Inc1.Get(featureEntity);
+                ref var c_feature = ref _featureFilter.Pools.Inc1.Get(featureEntity);
 
                 for (var i = 0; i < c_feature.DropDataList.Count; i++)
                 {
