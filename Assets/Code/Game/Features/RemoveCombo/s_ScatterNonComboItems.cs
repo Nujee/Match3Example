@@ -68,8 +68,8 @@ namespace Code.Game.Features.RemoveCombo
                     // TODO: do something with this caching and overall passing of ref to the tween
                     var boardPacked = c_feature.BoardPacked;
 
-                    c_itemTransform.Value.DOPunchPosition(netForce, ls.ScatterTween);
-                    //.OnComplete(() => world.AddRequest(new r_TopUp(boardPacked)));
+                    c_itemTransform.Value.DOPunchPosition(netForce, ls.ScatterTween)
+                        .OnComplete(() => world.AddRequest(new r_TopUp(boardPacked)));
                 }
                 
                 _featureFilter.Pools.Inc1.Del(featureEntity);
