@@ -6,15 +6,16 @@ using Code.Game.Items;
 using Code.Game.Main;
 using Code.Game.Utils;
 using Code.MySubmodule.ECS.Features.RequestsToFeatures;
+using Code.MySubmodule.ECS.Features.RequestTrain;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 
-namespace Code.Game.Features.TopUp
+namespace Code.Game.Features.RemoveCombo
 {
-    public sealed class s_SetUpTopUp : IEcsRunSystem
+    public sealed class s_TopUpCells : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<r_TopUp>> _featureRequestFilter = default;
+        private readonly EcsFilterInject<Inc<Step<s_TopUpCells>, c_RemoveCombo>> _featureFilter = default;
         
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
@@ -24,14 +25,13 @@ namespace Code.Game.Features.TopUp
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var featureRequest in _featureRequestFilter.Value)
+            foreach (var featureEntity in _featureFilter.Value)
             {
                 var world = systems.GetWorld();
                 var ls = _levelSettings.Value;
                 
-                ref var r_feature = ref _featureRequestFilter.Pools.Inc1.Get(featureRequest);
-                
-                if (!r_feature.BoardPacked.Unpack(systems.GetWorld(), out var boardEntity)) { continue; }
+                ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
+                if (!c_feature.BoardPacked.Unpack(systems.GetWorld(), out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
                 
                 var dropDataList = new List<DropData>();
@@ -52,10 +52,10 @@ namespace Code.Game.Features.TopUp
                         dropDataList.Add(topUpDropData);
                     }
                 }
+
+                world.AddRequest(new r_DropItems(c_feature.BoardPacked, dropDataList));
                 
-                world.AddRequest(new r_DropItems(r_feature.BoardPacked, dropDataList));
-                
-                world.DelEntity(featureRequest);
+                world.DelEntity(featureEntity);
             }
         }
         
@@ -112,7 +112,8 @@ namespace Code.Game.Features.TopUp
                     if (!targetCellPacked.Unpack(world, out var cellToEntity)) { continue; }
                     ref var c_cellTo = ref _cellPool.Value.Get(cellToEntity);
                     
-                    var newItemStartPosition = c_cellTo.WorldPosition + (thisColumnEmptyCells * Vector3.up);
+                    var newItemStartPosition = c_cellTo.WorldPosition 
+                                               + (_levelSettings.Value.BoardSlotsHeight * thisColumnEmptyCells * Vector3.up);
                     c_cellTo.SetRandomItem(world, _itemDataSet.Value, newItemStartPosition);
 
                     // add this item to the list of items to drop

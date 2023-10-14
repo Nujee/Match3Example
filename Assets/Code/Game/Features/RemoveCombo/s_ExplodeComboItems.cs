@@ -13,8 +13,7 @@ namespace Code.Game.Features.RemoveCombo
         {
             foreach (var featureEntity in _featureFilter.Value)
             {
-                "doSomeExplosion".Log();
-                
+
                 _featureFilter.Pools.Inc1.Del(featureEntity);
             }
         }

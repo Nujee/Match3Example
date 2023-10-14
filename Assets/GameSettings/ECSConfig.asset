@@ -12,8 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4edb0e7c22c594aaddb59c93415dae, type: 3}
   m_Name: ECSConfig
   m_EditorClassIdentifier: 
-  InitSystems: []
-  FeatureGroups: []
+  InitSystems:
+  - rid: 8425778874644168706
+  - rid: 8425778874644168707
+  FeatureGroups:
+  - SystemType: 1
+    UpdateInterval: 0
+    Features:
+    - IsActive: 1
+      Feature:
+        rid: 8425778874644168708
+    - IsActive: 1
+      Feature:
+        rid: 8425778874644168709
+    - IsActive: 1
+      Feature:
+        rid: 8425778874644168710
+    - IsActive: 1
+      Feature:
+        rid: 8425778874644168711
+    - IsActive: 1
+      Feature:
+        rid: 8425778874644168712
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8425778874644168706
+      type: {class: i_Board, ns: Code.Game.Hero, asm: MyGame}
+    - rid: 8425778874644168707
+      type: {class: i_RenewButton, ns: Code.Game.Interactables.RenewButton, asm: MyGame}
+    - rid: 8425778874644168708
+      type: {class: f_CleanButtonStateChange, ns: Code.Game.Features.CleanButtonStateChange, asm: MyGame}
+    - rid: 8425778874644168709
+      type: {class: f_CleanBoard, ns: Code.Game.Features.CleanBoard, asm: MyGame}
+    - rid: 8425778874644168710
+      type: {class: f_FindCombos, ns: Code.Game.Features.FindCombos, asm: MyGame}
+    - rid: 8425778874644168711
+      type: {class: f_RemoveCombo, ns: Code.Game.Features.RemoveCombo, asm: MyGame}
+    - rid: 8425778874644168712
+      type: {class: f_DropItems, ns: Code.Game.Features.DropItems, asm: MyGame}

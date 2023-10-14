@@ -7,7 +7,7 @@ namespace Code.Game.Features.CleanButtonStateChange
     {
         public void Init(EcsSystems systems)
         {
-            systems.Add(new s_CleanButtonStateChange());
+            systems.Add(new s_SetUpCleanButtonStateChange());
         }
     }
 }

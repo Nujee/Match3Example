@@ -4,7 +4,7 @@ using Leopotam.EcsLite.Di;
 
 namespace Code.Game.Features.CleanButtonStateChange
 {
-    public sealed class s_CleanButtonStateChange : IEcsRunSystem
+    public sealed class s_SetUpCleanButtonStateChange : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<r_ChangeCleanButtonState>> featureRequestFilter = default;
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Code.Game.Features.DropItems
 {
-    public sealed class s_ProcessDropItems : IEcsRunSystem
+    public sealed class  s_ProcessDropItems : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<c_DropItems>> _featureFilter = default;
         

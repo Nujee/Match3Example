@@ -29,11 +29,10 @@ namespace Code.Game.Features.FindCombos
             {
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
 
-                if (!c_feature.BoardPacked.Unpack(_world.Value, out var boardEntity)) continue;
+                if (!c_feature.BoardPacked.Unpack(_world.Value, out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
                 var allCombos = GetAllCombos(c_board.CellsPacked);
-        
                 if (allCombos.Count > 0)
                 {
                     var largestCombo = allCombos

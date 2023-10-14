@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using Code.Game.Features.TopUp;
 using Code.Game.Hero;
 using Code.Game.Main;
 using Code.Game.Utils;
+using Code.MySubmodule.DebugTools.MyLogger;
 using Code.MySubmodule.ECS.Components.UnityComponents;
-using Code.MySubmodule.ECS.Features.RequestsToFeatures;
 using Code.MySubmodule.ECS.Features.RequestTrain;
-using DG.Tweening;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -36,7 +34,6 @@ namespace Code.Game.Features.RemoveCombo
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
 
                 var comboEntitiesToPositions = new Dictionary<int, Vector3>();
-
                 foreach (var cellPacked in c_feature.ComboTypeToCellsPacked.cells)
                 {
                     if (!cellPacked.Unpack(world, out var comboEntity)) { continue; }
@@ -46,7 +43,6 @@ namespace Code.Game.Features.RemoveCombo
 
                 foreach (var cellPacked in c_board.CellsPacked)
                 {
-                    // check if cell isn't in combo
                     var isCellEntityAlive = cellPacked.Unpack(world, out var cellEntity);
                     var isCellInCombo = comboEntitiesToPositions.ContainsKey(cellEntity);
                     
@@ -60,16 +56,13 @@ namespace Code.Game.Features.RemoveCombo
                     var netForce = Vector3.zero;
                     foreach (var comboPosition in comboEntitiesToPositions.Values)
                     {
-                        var partialForceVector = comboPosition - c_cell.WorldPosition;
+                        var partialForceVector = c_cell.WorldPosition - comboPosition;
                         var partialForceUnit = partialForceVector / partialForceVector.sqrMagnitude;
-                        netForce += partialForceUnit * ls.ScatterForce;
+                        netForce += partialForceUnit;
                     }
+                    netForce *= ls.ScatterForce;
                     
-                    // TODO: do something with this caching and overall passing of ref to the tween
-                    var boardPacked = c_feature.BoardPacked;
-
-                    c_itemTransform.Value.DOPunchPosition(netForce, ls.ScatterTween)
-                        .OnComplete(() => world.AddRequest(new r_TopUp(boardPacked)));
+                    c_itemTransform.Value.DOPunchPosition(netForce, ls.ScatterTween);
                 }
                 
                 _featureFilter.Pools.Inc1.Del(featureEntity);

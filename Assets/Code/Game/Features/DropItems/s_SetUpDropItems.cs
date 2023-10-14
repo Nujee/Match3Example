@@ -17,7 +17,7 @@ namespace Code.Game.Features.DropItems
                 
                 ref var r_feature = ref _featureRequestFilter.Pools.Inc1.Get(featureRequest);
                 
-                var featureEntity = systems.GetWorld().NewEntity();
+                var featureEntity = world.NewEntity();
                 ref var c_feature = ref _featurePool.Value.Add(featureEntity);
                 
                 c_feature.BoardPacked = r_feature.BoardPacked;
