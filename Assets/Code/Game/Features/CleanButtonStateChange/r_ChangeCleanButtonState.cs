@@ -2,7 +2,7 @@
 {
     public struct r_ChangeCleanButtonState
     {
-        public bool IsActive;
+        public readonly bool IsActive;
         
         public r_ChangeCleanButtonState(bool isActive)
         {

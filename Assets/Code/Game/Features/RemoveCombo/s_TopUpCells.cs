@@ -20,23 +20,22 @@ namespace Code.Game.Features.RemoveCombo
         private readonly EcsPoolInject<c_Board> _boardPool = default;
         private readonly EcsPoolInject<c_Cell> _cellPool = default;
 
-        private readonly EcsCustomInject<LevelSettings> _levelSettings = default;
+        private readonly EcsCustomInject<LevelSettings> _ls = default;
         private readonly EcsCustomInject<ItemDataSet> _itemDataSet = default;
 
+        private readonly EcsWorldInject _world = default;
+        
         public void Run(IEcsSystems systems)
         {
             foreach (var featureEntity in _featureFilter.Value)
             {
-                var world = systems.GetWorld();
-                var ls = _levelSettings.Value;
-                
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
                 if (!c_feature.BoardPacked.Unpack(systems.GetWorld(), out var boardEntity)) { continue; }
                 ref var c_board = ref _boardPool.Value.Get(boardEntity);
                 
                 var dropDataList = new List<DropData>();
                 
-                var aggregatedList = ReassignItemsToLowerCells(ref c_board, world);
+                var aggregatedList = ReassignItemsToLowerCells(ref c_board);
                 for (var topUpColumn = 0; topUpColumn < aggregatedList.Count; topUpColumn++)
                 {
                     var topUpColumnLength = aggregatedList[topUpColumn].Count;
@@ -45,21 +44,21 @@ namespace Code.Game.Features.RemoveCombo
                         var topUpDropData = new DropData
                         {
                             ItemPacked = aggregatedList[topUpColumn][topUpRow].itemPacked,
-                            Delay = ls.DropItemsInBetweenDelay * topUpRow,
+                            Delay = _ls.Value.DropItemsInBetweenDelay * topUpRow,
                             TargetPosition = aggregatedList[topUpColumn][topUpRow].endpoint,
-                            Speed = ls.DropItemsStartSpeed
+                            Speed = _ls.Value.DropItemsStartSpeed
                         };
                         dropDataList.Add(topUpDropData);
                     }
                 }
 
-                world.AddRequest(new r_DropItems(c_feature.BoardPacked, dropDataList));
+                _world.Value.AddRequest(new r_DropItems(c_feature.BoardPacked, dropDataList));
                 
-                world.DelEntity(featureEntity);
+                _world.Value.DelEntity(featureEntity);
             }
         }
         
-        private List<List<(EcsPackedEntity itemPacked, Vector3 endpoint)>> ReassignItemsToLowerCells(ref c_Board c_board, EcsWorld world)
+        private List<List<(EcsPackedEntity itemPacked, Vector3 endpoint)>> ReassignItemsToLowerCells(ref c_Board c_board)
         {
             var result = new List<List<(EcsPackedEntity, Vector3)>>();
             
@@ -78,11 +77,11 @@ namespace Code.Game.Features.RemoveCombo
                 {
                     var thisCell = c_board.CellsPacked[row, col];
                     
-                    if (!thisCell.Unpack(world, out var thisCellEntity)) { continue; }
+                    if (!thisCell.Unpack(_world.Value, out var thisCellEntity)) { continue; }
                     ref var c_thisCell = ref _cellPool.Value.Get(thisCellEntity);
 
                     // if this slot is empty, increment empty slots counter...
-                    if (!c_thisCell.AttachedItemPacked.Unpack(world, out _))
+                    if (!c_thisCell.AttachedItemPacked.Unpack(_world.Value, out _))
                     {
                         thisColumnEmptyCells++;
                     }
@@ -92,7 +91,7 @@ namespace Code.Game.Features.RemoveCombo
                     {
                         var targetCellPacked = c_board.CellsPacked[row + thisColumnEmptyCells, col];
                         
-                        if (!targetCellPacked.Unpack(world, out var cellToEntity)) { continue; }
+                        if (!targetCellPacked.Unpack(_world.Value, out var cellToEntity)) { continue; }
                         ref var c_cellTo = ref _cellPool.Value.Get(cellToEntity);
                         
                         c_cellTo.AttachedItemPacked = c_thisCell.AttachedItemPacked;
@@ -109,12 +108,12 @@ namespace Code.Game.Features.RemoveCombo
                 {
                     var targetCellPacked = c_board.CellsPacked[row, col];
                     
-                    if (!targetCellPacked.Unpack(world, out var cellToEntity)) { continue; }
+                    if (!targetCellPacked.Unpack(_world.Value, out var cellToEntity)) { continue; }
                     ref var c_cellTo = ref _cellPool.Value.Get(cellToEntity);
-                    
-                    var newItemStartPosition = c_cellTo.WorldPosition 
-                                               + (_levelSettings.Value.BoardSlotsHeight * thisColumnEmptyCells * Vector3.up);
-                    c_cellTo.SetRandomItem(world, _itemDataSet.Value, newItemStartPosition);
+
+                    var newItemDisplacement = _ls.Value.BoardSlotsHeight * thisColumnEmptyCells * Vector3.up;
+                    var newItemStartPosition = c_cellTo.WorldPosition + newItemDisplacement;
+                    c_cellTo.SetRandomItem(_world.Value, _itemDataSet.Value, newItemStartPosition);
 
                     // add this item to the list of items to drop
                     itemEntitiesToEndpoints.Add((c_cellTo.AttachedItemPacked, c_cellTo.WorldPosition));

@@ -6,7 +6,7 @@ namespace Code.Game.Features.DropItems
     public struct r_DropItems
     {
         public EcsPackedEntity BoardPacked;
-        public List<DropData> DropDataList;
+        public readonly List<DropData> DropDataList;
 
         public r_DropItems(EcsPackedEntity boardPacked, List<DropData> dropDataList)
         {

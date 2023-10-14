@@ -25,7 +25,7 @@ namespace Code.Game.Features.RemoveCombo
             {
                 ref var c_feature = ref _featureFilter.Pools.Inc2.Get(featureEntity);
 
-                var currentProgress = c_feature.ShakeDurationElapsed / c_feature.ShakeDurationTotal;
+                var shakeProgress = c_feature.ShakeDurationElapsed / c_feature.ShakeDurationTotal;
                 c_feature.ShakeDurationElapsed += Time.deltaTime;
                 
                 foreach (var comboCellPacked in c_feature.ComboTypeToCellsPacked.cells)
@@ -40,11 +40,11 @@ namespace Code.Game.Features.RemoveCombo
                     if (c_feature.ShakeDurationElapsed < c_feature.ShakeDurationTotal)
                     {
                         //TODO: do something with this square() - thing maybe?
-                        var shift = c_feature.ShakeMagnitude * currentProgress.Square() * (Vector3)Random.insideUnitCircle;
+                        var shift = c_feature.ShakeMagnitude * shakeProgress.Square() * (Vector3)Random.insideUnitCircle;
                         c_itemTransform.Value.position = c_cell.WorldPosition + shift;
                         //TODO: remove hardcoded values
-                        var toScale = Mathf.Lerp(1f, 0.9f, currentProgress.Square());
-                        c_itemTransform.Value.localScale = toScale * Vector3.one;
+                        var targetScale = Mathf.Lerp(1f, 0.9f, shakeProgress);
+                        c_itemTransform.Value.localScale = targetScale * Vector3.one;
                     }
                     else
                     {

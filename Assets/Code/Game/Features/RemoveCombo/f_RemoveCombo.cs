@@ -8,14 +8,11 @@ namespace Code.Game.Features.RemoveCombo
         public void Init(EcsSystems systems)
         {
             systems.Add(new s_SetUpRemoveCombo());
+            
             systems.Add(new s_ShakeComboItems());
             systems.Add(new s_ExplodeComboItems());
             systems.Add(new s_ScatterNonComboItems());
             systems.Add(new s_TopUpCells());
-            // start delay and do something like shaking during this delay
-            // push other items on shake end
-            // somehow "explode"(?) combo items and remove at the explosion end
-            // after delay, drop new items on their places
         }
     }
 }
